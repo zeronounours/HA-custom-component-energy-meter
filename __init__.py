@@ -37,7 +37,7 @@ ENERGY_METER_CONFIG_SCHEMA = vol.Schema(
     vol.All(
         vol.Schema(METER_CONFIG_SCHEMA.schema.validators[0]).extend(
             {
-                vol.Optional(CONF_PRICE): cv.small_float,
+                vol.Optional(CONF_PRICE): cv.positive_float,
                 vol.Optional(CONF_PRICE_ENTITY): cv.entity_id,
             }
         ),
