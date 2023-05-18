@@ -1,0 +1,266 @@
+{
+  "version": 1,
+  "minor_version": 10,
+  "key": "core.entity_registry",
+  "data": {
+    "entities": [
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "sensor.sun_next_dawn",
+        "hidden_by": null,
+        "icon": null,
+        "id": "3ffbb7a59e2b3f5dc600ef9edeefb98e",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next dawn",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_dawn",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-next_dawn",
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "sensor.sun_next_dusk",
+        "hidden_by": null,
+        "icon": null,
+        "id": "4682078ee194ff3a66a3af226a22a32d",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next dusk",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_dusk",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-next_dusk",
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "sensor.sun_next_midnight",
+        "hidden_by": null,
+        "icon": null,
+        "id": "bb4491e26b8e11088099999b4c8d4c5e",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next midnight",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_midnight",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-next_midnight",
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "sensor.sun_next_noon",
+        "hidden_by": null,
+        "icon": null,
+        "id": "f754f5f62a557e1b831110349d0ec4c6",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next noon",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_noon",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-next_noon",
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "sensor.sun_next_rising",
+        "hidden_by": null,
+        "icon": null,
+        "id": "8bea7f31dc53acc054f8f823d7dfea5f",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next rising",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_rising",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-next_rising",
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "sensor.sun_next_setting",
+        "hidden_by": null,
+        "icon": null,
+        "id": "a0f764ed989c55eb3913748631e69354",
+        "has_entity_name": true,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": "timestamp",
+        "original_icon": "mdi:sun-clock",
+        "original_name": "Next setting",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "next_setting",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-next_setting",
+        "unit_of_measurement": null
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": {
+          "state_class": "measurement"
+        },
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": "integration",
+        "entity_category": null,
+        "entity_id": "sensor.sun_solar_elevation",
+        "hidden_by": null,
+        "icon": null,
+        "id": "64b60025c2e9f9ace34ccbb571e99291",
+        "has_entity_name": true,
+        "name": null,
+        "options": {},
+        "original_device_class": null,
+        "original_icon": "mdi:theme-light-dark",
+        "original_name": "Solar elevation",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "solar_elevation",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-solar_elevation",
+        "unit_of_measurement": "°"
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": {
+          "state_class": "measurement"
+        },
+        "config_entry_id": "7c97b3ddf485e97afa7d13f7e8f1a372",
+        "device_class": null,
+        "device_id": "9362ded95945011239b75581bce29b3d",
+        "disabled_by": "integration",
+        "entity_category": null,
+        "entity_id": "sensor.sun_solar_azimuth",
+        "hidden_by": null,
+        "icon": null,
+        "id": "039e43ae74893ea03136814fe6b7f165",
+        "has_entity_name": true,
+        "name": null,
+        "options": {},
+        "original_device_class": null,
+        "original_icon": "mdi:sun-angle",
+        "original_name": "Solar azimuth",
+        "platform": "sun",
+        "supported_features": 0,
+        "translation_key": "solar_azimuth",
+        "unique_id": "7c97b3ddf485e97afa7d13f7e8f1a372-solar_azimuth",
+        "unit_of_measurement": "°"
+      },
+      {
+        "aliases": [],
+        "area_id": null,
+        "capabilities": null,
+        "config_entry_id": null,
+        "device_class": null,
+        "device_id": null,
+        "disabled_by": null,
+        "entity_category": null,
+        "entity_id": "person.test",
+        "hidden_by": null,
+        "icon": null,
+        "id": "a2f42de77a2a7996254a91bd34010f49",
+        "has_entity_name": false,
+        "name": null,
+        "options": {
+          "conversation": {
+            "should_expose": false
+          }
+        },
+        "original_device_class": null,
+        "original_icon": null,
+        "original_name": "test",
+        "platform": "person",
+        "supported_features": 0,
+        "translation_key": null,
+        "unique_id": "test",
+        "unit_of_measurement": null
+      }
+    ]
+  }
+}

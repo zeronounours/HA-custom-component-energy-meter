@@ -1,0 +1,52 @@
+input_number:
+  energy_price:
+    name: Energy price input
+    initial: 2
+    min: 0
+    max: 100
+    step: 0.5
+  power:
+    name: Power input
+    initial: 1000
+    min: 0
+    max: 10000
+    step: 100
+
+template:
+  - sensor:
+      - name: Energy price
+        state: "{{ states('input_number.energy_price') }}"
+        unit_of_measurement: USD/kWh
+        device_class: monetary
+      - name: Power
+        state: "{{ states('input_number.power') }}"
+        unit_of_measurement: kW
+        device_class: power
+
+sensor:
+  - platform: integration
+    source: sensor.power
+    name: energy
+
+energy_meter:
+  daily_energy:
+    source: sensor.energy
+    name: Daily Energy
+    cycle: daily
+    price_entity: sensor.energy_price
+    tariffs:
+      - peak
+      - offpeak
+  monthly_energy:
+    source: sensor.energy
+    name: Monthly Energy
+    cycle: monthly
+    price: 5
+    tariffs:
+      - peak
+      - offpeak
+  yearly_energy:
+    source: sensor.energy
+    name: Yearly Energy
+    cycle: yearly
+    price_entity: sensor.energy_price
