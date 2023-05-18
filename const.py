@@ -5,3 +5,5 @@ CONF_CONF = "conf"
 
 CONF_PRICE = "price"
 CONF_PRICE_ENTITY = "price_entity"
+
+DATA_ENERGY_METER = "energy_meter_data"

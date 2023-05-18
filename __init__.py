@@ -26,6 +26,7 @@ from .const import (
     CONF_CONF,
     CONF_PRICE,
     CONF_PRICE_ENTITY,
+    DATA_ENERGY_METER,
     DOMAIN,
 )
 
@@ -55,6 +56,8 @@ CONFIG_SCHEMA = vol.Schema(
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Set up an Energy Meter."""
+    hass.data[DATA_ENERGY_METER] = {}
+
     if DOMAIN not in config:
         return True
 
@@ -71,7 +74,14 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         # Create the sensor & utility_meters for the energy cost
         if conf.get(CONF_PRICE) is not None or conf.get(CONF_PRICE_ENTITY) is not None:
             # cost sensor
-            cost_entity = await setup_energy_cost_sensor(hass, config, conf)
+            # Ony create a new one if none have been created before. Prevent
+            # entity_id issues when 2 energy_meters follow the same source
+            energy_source = conf[CONF_SOURCE_SENSOR]
+            if energy_source in hass.data[DATA_ENERGY_METER]:
+                cost_entity = hass.data[DATA_ENERGY_METER][energy_source]
+            else:
+                cost_entity = await setup_energy_cost_sensor(hass, config, conf)
+                hass.data[DATA_ENERGY_METER][energy_source] = cost_entity
 
             # utility_meter
             um_conf = conf.copy()
