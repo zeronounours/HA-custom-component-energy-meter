@@ -13,20 +13,30 @@ input_number:
     step: 100
 
 template:
-  - sensor:
+  - trigger:
+    - platform: time_pattern
+      hours: '*'
+      minutes: '*'
+      seconds: '*'
+    sensor:
       - name: Energy price
         state: "{{ states('input_number.energy_price') }}"
         unit_of_measurement: USD/kWh
         device_class: monetary
+        attributes:  # to force update every seconds for integration
+         attribute: "{{ now().second }}"
       - name: Power
         state: "{{ states('input_number.power') }}"
-        unit_of_measurement: kW
+        unit_of_measurement: W
         device_class: power
+        attributes:  # to force update every seconds for integration
+         attribute: "{{ now().second }}"
 
 sensor:
   - platform: integration
     source: sensor.power
     name: energy
+    unit_prefix: k
 
 energy_meter:
   daily_energy:

@@ -5,10 +5,6 @@ default_config:
 frontend:
   themes: !include_dir_merge_named themes
 
-# Text to speech
-tts:
-  - platform: google_translate
-
 logger:
   default: info
   logs:
@@ -20,4 +16,12 @@ scene: !include scenes.yaml
 
 homeassistant:
   packages:
-    test_pack: !include entities/test_package.yaml
+    test_pack: !include includes/package.yaml
+
+lovelace:
+  mode: yaml
+  dashboards:
+    test-dashboard:
+      mode: yaml
+      title: test
+      filename: "includes/dashboard.yaml"

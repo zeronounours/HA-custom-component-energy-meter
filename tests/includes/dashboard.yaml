@@ -1,0 +1,33 @@
+title: test
+views:
+  - title: Energy
+    path: energy
+    cards:
+      - type: entities
+        entities:
+          - input_number.energy_price
+          - input_number.power
+          - type: section
+          - select.daily_energy
+          - select.monthly_energy
+
+      - type: entities
+        entities:
+          - sensor.energy_price
+          - sensor.power
+          - sensor.energy
+          - type: section
+          - sensor.energy_cost
+          - type: section
+          - sensor.daily_energy_peak
+          - sensor.daily_energy_offpeak
+          - sensor.daily_energy_cost_peak
+          - sensor.daily_energy_cost_offpeak
+          - type: section
+          - sensor.monthly_energy_peak
+          - sensor.monthly_energy_offpeak
+          - sensor.monthly_energy_cost_peak
+          - sensor.monthly_energy_cost_offpeak
+          - type: section
+          - sensor.yearly_energy
+          - sensor.yearly_energy_cost

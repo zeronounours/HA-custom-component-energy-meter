@@ -3,7 +3,13 @@
 TEST_DIR="$(dirname "$(realpath "$0")")"
 GIT_DIR="$(dirname "$TEST_DIR")"
 
-DOCKER="${1:-docker}"
+if [ -n "${1:+}" ]; then
+  DOCKER="${1}"
+elif which podman &> /dev/null; then
+  DOCKER="podman"
+else
+  DOCKER="docker"
+fi
 IMAGE="ghcr.io/home-assistant/home-assistant:stable"
 NAME="HA_test_integration"
 PORT="8123"
@@ -15,8 +21,7 @@ $DOCKER create \
   --rm \
   --name "$NAME" \
   --publish "127.0.0.1:$PORT:$PORT" \
-  --volume "$TEST_DIR/configuration.yaml:/config/configuration.yaml" \
-  --volume "$TEST_DIR/entities:/config/entities" \
+  --volume "$TEST_DIR/includes:/config/includes" \
   --volume "$GIT_DIR:/config/custom_components/energy_meter" \
   "$IMAGE" > /dev/null
 
