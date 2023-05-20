@@ -1,20 +1,33 @@
-# Energy meter
+# Energy Meter
 
-Provides extended features on top of the builtin utility meter to track costs
-for each tariff as well as total costs.
+[![GitHub Release][releases-shield]][releases]
+[![License][license-shield]](LICENSE)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+
+The Energy Meter integration provides functionality to track consumptions of
+various utilities, like the builtin Utility Meter. But on top of it, it adds
+entities to track costs for each tariffs.
+
+Provides extended features on top of the builtin utility meter and energy
+sensors to track costs for each tariff as well as total costs. It is possible
+to achieve the same using templates, but it is long and error-prone to do it
+for every single energy entity you want to track
+
+![Example](img/energy_meter_screen.png)
 
 ## Installation
 
-1. Clone the repository within `custom_components`
+### HACS - preferred
 
-```shell
-cd /config/custom_components
-git clone https://github.com/zeronounours/HA-custom-component-energy-meter.git energy_meter
-```
+This repository is compatible with HACS. This is the preferred way to install
+the custom component.
 
-**Note:** the directory of the custom components must be named `energy_meter`
+### Manual
 
-2. Restart Home Assistant
+1. Download the release zip from [releases pages][releases]
+2. Copy it within `<HA config dir>/custom_components/energy_meter`
+3. Unzip in place
+4. Restart Home Assistant
 
 ## Configuration
 
@@ -68,3 +81,10 @@ energy_meter:
       - peak
       - offpeak
 ```
+
+[releases-shield]:
+  https://img.shields.io/github/release/zeronounours/HA-custom-component-energy-meter.svg?style=for-the-badge
+[releases]:
+  https://github.com/zeronounours/HA-custom-component-energy-meter/releases
+[license-shield]:
+  https://img.shields.io/github/license/zeronounours/HA-custom-component-energy-meter.svg?style=for-the-badge
