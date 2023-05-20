@@ -116,8 +116,10 @@ async def setup_utility_meter_select(
     """Create the select for utility_meters."""
     # Only create the select if multiple tariffs are created
     if not conf[CONF_TARIFFS]:
+        _LOGGER.debug("Setup %s.%s: skip utility_meter select entity", DOMAIN, meter)
         return ""
 
+    _LOGGER.debug("Setup %s.%s: create utility_meter select entity", DOMAIN, meter)
     # create tariff selection
     hass.async_create_task(
         discovery.async_load_platform(
@@ -146,6 +148,11 @@ async def setup_utility_meter_sensors(
     hass.data[DATA_UTILITY][meter][DATA_TARIFF_SENSORS] = []
 
     if not conf[CONF_TARIFFS]:
+        _LOGGER.debug(
+            "Setup %s.%s: create a single utility_meter sensor",
+            DOMAIN,
+            meter,
+        )
         # only one entity is required
         hass.async_create_task(
             discovery.async_load_platform(
@@ -169,15 +176,21 @@ async def setup_utility_meter_sensors(
                 CONF_TARIFF: tariff,
             }
 
-            hass.async_create_task(
-                discovery.async_load_platform(
-                    hass,
-                    SENSOR_DOMAIN,
-                    UM_DOMAIN,
-                    tariff_confs,
-                    config,
-                ),
-            )
+        _LOGGER.debug(
+            "Setup %s.%s: create utility_meter sensors for tariffs %s",
+            DOMAIN,
+            meter,
+            conf[CONF_TARIFFS],
+        )
+        hass.async_create_task(
+            discovery.async_load_platform(
+                hass,
+                SENSOR_DOMAIN,
+                UM_DOMAIN,
+                tariff_confs,
+                config,
+            ),
+        )
 
 
 async def setup_energy_cost_sensor(
@@ -186,6 +199,11 @@ async def setup_energy_cost_sensor(
     meter_conf: dict,
 ):
     """Create a cost sensor to follow an energy sensor."""
+    _LOGGER.debug(
+        "Setup %s: create energy cost sensor for entity %s",
+        DOMAIN,
+        meter_conf[CONF_SOURCE_SENSOR],
+    )
     hass.async_create_task(
         discovery.async_load_platform(
             hass,
