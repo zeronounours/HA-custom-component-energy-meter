@@ -22,7 +22,7 @@ $DOCKER create \
   --name "$NAME" \
   --publish "127.0.0.1:$PORT:$PORT" \
   --volume "$TEST_DIR/includes:/config/includes" \
-  --volume "$GIT_DIR:/config/custom_components/energy_meter" \
+  --volume "$GIT_DIR/energy_meter:/config/custom_components/energy_meter" \
   "$IMAGE" > /dev/null
 
 $DOCKER cp "$TEST_DIR/config" "$NAME:/"
