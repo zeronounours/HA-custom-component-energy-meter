@@ -3,7 +3,7 @@
   "domain": "energy_meter",
   "name": "Energy Meter",
   "codeowners": ["@zeronounours"],
-  "dependencies": ["utility_meter"],
+  "dependencies": ["utility_meter", "energy"],
   "config_flow": false,
   "documentation": "https://github.com/zeronounours/HA-custom-component-energy-meter",
   "integration_type": "helper",
