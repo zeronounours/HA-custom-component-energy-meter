@@ -1,4 +1,5 @@
 """Constants for the energy meter component."""
+
 DOMAIN = "energy_meter"
 
 CONF_CONF = "conf"

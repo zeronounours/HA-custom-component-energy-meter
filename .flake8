@@ -11,9 +11,10 @@ max-line-length = 79
 max-doc-length = 72
 
 ; Ignore E501: max line to line, in favor of B950 which allow exceptional
-; Ignore E203: whitespace before ':' (incompatible with black)
 ; 10% overhead
-ignore = W503, D400, D205, E501, E203
+; Ignore E203: whitespace before ':' (incompatible with black)
+; Ignore C101: don't require coding magic (incompatible with ruff)
+ignore = W503, D400, D205, E501, E203, C101
 ; ignore missing docs for filters
 per-file-ignores =
 

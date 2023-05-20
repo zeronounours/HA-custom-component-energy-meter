@@ -1,9 +1,10 @@
 """Helper sensor for calculating utility costs."""
 from __future__ import annotations
 
+# Standard libraries
 import logging
-from typing import Optional
 
+# Third party libraries
 from homeassistant.components.energy.sensor import (
     EnergyCostSensor as BaseEnergyCostSensor,
     SourceAdapter,
@@ -14,7 +15,6 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
 from .const import CONF_CONF, CONF_PRICE, CONF_PRICE_ENTITY
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -29,7 +29,7 @@ async def async_setup_platform(
     if discovery_info is None:
         _LOGGER.error(
             "This platform is not available to configure "
-            "from 'sensor:' in configuration.yaml"
+            "from 'sensor:' in configuration.yaml",
         )
         return
 
@@ -53,8 +53,8 @@ class EnergyCostSensor(BaseEnergyCostSensor):
     def __init__(
         self,
         source_entity: str,
-        price: Optional[float],
-        price_entity: Optional[str],
+        price: float | None,
+        price_entity: str | None,
     ) -> None:
         """Initialize the sensor."""
         super().__init__(

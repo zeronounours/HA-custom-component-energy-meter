@@ -1,26 +1,27 @@
-"""Support for tracking consumption & price over given periods of time."""
+"""Support for tracking consumption & cost."""
+# Standard libraries
 import logging
 
-import voluptuous as vol
-
-from homeassistant.const import CONF_NAME
+# Third party libraries
 from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
 from homeassistant.components.sensor import DOMAIN as SENSOR_DOMAIN
 from homeassistant.components.utility_meter import (
     CONF_METER,
     CONF_SOURCE_SENSOR,
     CONF_TARIFF,
-    CONF_TARIFFS,
     CONF_TARIFF_ENTITY,
+    CONF_TARIFFS,
     DATA_TARIFF_SENSORS,
     DATA_UTILITY,
     DOMAIN as UM_DOMAIN,
     METER_CONFIG_SCHEMA,
 )
+from homeassistant.const import CONF_NAME
 from homeassistant.core import HomeAssistant, split_entity_id
 from homeassistant.helpers import discovery
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.typing import ConfigType
+import voluptuous as vol
 
 from .const import (
     CONF_CONF,
@@ -40,10 +41,10 @@ ENERGY_METER_CONFIG_SCHEMA = vol.Schema(
             {
                 vol.Optional(CONF_PRICE): cv.positive_float,
                 vol.Optional(CONF_PRICE_ENTITY): cv.entity_id,
-            }
+            },
         ),
         *METER_CONFIG_SCHEMA.schema.validators[1:],
-    )
+    ),
 )
 
 CONFIG_SCHEMA = vol.Schema(
@@ -74,8 +75,9 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         # Create the sensor & utility_meters for the energy cost
         if conf.get(CONF_PRICE) is not None or conf.get(CONF_PRICE_ENTITY) is not None:
             # cost sensor
-            # Ony create a new one if none have been created before. Prevent
-            # entity_id issues when 2 energy_meters follow the same source
+            # Only create a new one if none have been created before.
+            # Prevent entity_id issues when 2 energy_meters follow the
+            # same source
             energy_source = conf[CONF_SOURCE_SENSOR]
             if energy_source in hass.data[DATA_ENERGY_METER]:
                 cost_entity = hass.data[DATA_ENERGY_METER][energy_source]
@@ -95,15 +97,23 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             um_conf[CONF_NAME] = name
 
             await setup_utility_meter_sensors(
-                hass, config, f"{meter}_cost", um_conf, select_entity
+                hass,
+                config,
+                f"{meter}_cost",
+                um_conf,
+                select_entity,
             )
 
     return True
 
 
 async def setup_utility_meter_select(
-    hass: HomeAssistant, config: ConfigType, meter: str, conf: dict
+    hass: HomeAssistant,
+    config: ConfigType,
+    meter: str,
+    conf: dict,
 ) -> str:
+    """Create the select for utility_meters."""
     # Only create the select if multiple tariffs are created
     if not conf[CONF_TARIFFS]:
         return ""
@@ -116,16 +126,21 @@ async def setup_utility_meter_select(
             UM_DOMAIN,
             {CONF_METER: meter, CONF_TARIFFS: conf[CONF_TARIFFS]},
             config,
-        )
+        ),
     )
 
     # create the select entity ID the same way utility_meter does
-    return "{}.{}".format(SELECT_DOMAIN, meter)
+    return f"{SELECT_DOMAIN}.{meter}"
 
 
 async def setup_utility_meter_sensors(
-    hass: HomeAssistant, config: ConfigType, meter: str, conf: dict, select_entity: str
+    hass: HomeAssistant,
+    config: ConfigType,
+    meter: str,
+    conf: dict,
+    select_entity: str,
 ):
+    """Create the utility_meter sensors linked to the select entity."""
     # use of copy of the conf to keep data of energy & cost separate
     hass.data[DATA_UTILITY][meter] = conf.copy()
     hass.data[DATA_UTILITY][meter][DATA_TARIFF_SENSORS] = []
@@ -139,7 +154,7 @@ async def setup_utility_meter_sensors(
                 UM_DOMAIN,
                 {meter: {CONF_METER: meter}},
                 config,
-            )
+            ),
         )
     else:
         # Indicate the select entity for the tariff selection
@@ -156,14 +171,21 @@ async def setup_utility_meter_sensors(
 
             hass.async_create_task(
                 discovery.async_load_platform(
-                    hass, SENSOR_DOMAIN, UM_DOMAIN, tariff_confs, config
-                )
+                    hass,
+                    SENSOR_DOMAIN,
+                    UM_DOMAIN,
+                    tariff_confs,
+                    config,
+                ),
             )
 
 
 async def setup_energy_cost_sensor(
-    hass: HomeAssistant, config: ConfigType, meter_conf: dict
+    hass: HomeAssistant,
+    config: ConfigType,
+    meter_conf: dict,
 ):
+    """Create a cost sensor to follow an energy sensor."""
     hass.async_create_task(
         discovery.async_load_platform(
             hass,
@@ -171,6 +193,6 @@ async def setup_energy_cost_sensor(
             DOMAIN,
             {CONF_CONF: meter_conf},
             config,
-        )
+        ),
     )
-    return "{}_cost".format(meter_conf[CONF_SOURCE_SENSOR])
+    return f"{meter_conf[CONF_SOURCE_SENSOR]}_cost"

@@ -6,6 +6,7 @@ for each tariff as well as total costs.
 ## Installation
 
 1. Clone the repository within `custom_components`
+
 ```shell
 cd /config/custom_components
 git clone https://github.com/zeronounours/HA-custom-component-energy-meter.git energy_meter
@@ -18,19 +19,23 @@ git clone https://github.com/zeronounours/HA-custom-component-energy-meter.git e
 ## Configuration
 
 The configuration of the component is mostly the same as the builtin
-`utility_meter` integration: https://www.home-assistant.io/integrations/utility_meter/
+`utility_meter` integration:
+https://www.home-assistant.io/integrations/utility_meter/
 
 The only difference is the addition of `price` and `price_entity` options:
 
 ---
-**price** *float (optional)*
+
+**price** _float (optional)_
 
 The static price of the tariff (in currency/kWh)
 
 ---
-**price_entity** *string (optional)*
 
-The entity ID of a sensor giving the current price of the tariff (in currency/kWh)
+**price_entity** _string (optional)_
+
+The entity ID of a sensor giving the current price of the tariff (in
+currency/kWh)
 
 ---
 
