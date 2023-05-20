@@ -31,3 +31,8 @@ $DOCKER start "$NAME"
 
 echo "HA container is accessible on http://127.0.0.1:$PORT"
 echo "Credentials are test:test"
+
+# Open with xdg-open
+if which xdg-open &> /dev/null; then
+  xdg-open "http://127.0.0.1:$PORT/test-dashboard/energy"
+fi

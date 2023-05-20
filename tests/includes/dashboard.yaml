@@ -10,6 +10,20 @@ views:
           - type: section
           - select.daily_energy
           - select.monthly_energy
+          - type: button
+            name: Reset daily meter
+            tap_action:
+              action: call-service
+              service: utility_meter.reset
+              target:
+                entity_id: select.daily_energy
+          - type: button
+            name: Reset monthly meter
+            tap_action:
+              action: call-service
+              service: utility_meter.reset
+              target:
+                entity_id: select.monthly_energy
 
       - type: entities
         entities:
