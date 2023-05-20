@@ -1,0 +1,4 @@
+skips:
+  - B101 # Ignore defensive `assert`s (especially useful for mypy)
+  - B404 # Ignore warnings about importing subprocess
+  - B603 # Ignore warnings about calling subprocess.Popen without shell=True

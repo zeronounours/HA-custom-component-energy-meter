@@ -1,0 +1,47 @@
+; flake8 config cannot be merged within setup.cfg due to setuptools being
+; bugged.
+; See: https://github.com/pypa/pip/issues/5182
+
+[flake8]
+; directory which should not be checked
+exclude = .git,__pycache__,old,build,dist,.tox,venv,.venv
+
+; Define the max line lengths
+max-line-length = 79
+max-doc-length = 72
+
+; Ignore E501: max line to line, in favor of B950 which allow exceptional
+; Ignore E203: whitespace before ':' (incompatible with black)
+; 10% overhead
+ignore = W503, D400, D205, E501, E203
+; ignore missing docs for filters
+per-file-ignores =
+
+; enable some flake8 plugins
+enable-extensions = "G"
+
+; mimics flake8-colors
+format = %(cyan)s%(path)s%(reset)s:%(yellow)s%(bold)s%(row)d%(reset)s:%(green)s%(bold)s%(col)d%(reset)s: %(red)s%(bold)s%(code)s%(reset)s %(text)s
+
+; configure pep8-naming
+classmethod-decorators = classmethod,classproperty
+ignore-names = setUp,tearDown,setUpClass,tearDownClass,setUpTestData,failureException,longMessage,maxDiff,addSuccess,addFailure,addError,printErrorList,addTest
+
+; configure flake8-quote
+inline-quotes = "
+multiline-quotes = """
+docstring-quotes = """
+avoid-escape = False
+
+; configure flake8-coding
+accept-encodings = utf-8
+
+; configure flake8-docstring
+docstring-convention = pep257
+
+; configure flake8-import-order
+import-order-style = google
+
+; configure darglint
+strictness=short
+docstring_style=google
