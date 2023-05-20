@@ -1,11 +1,12 @@
 {
-  "version": "0.1.0",
   "domain": "energy_meter",
   "name": "Energy Meter",
   "codeowners": ["@zeronounours"],
-  "dependencies": ["utility_meter", "energy"],
   "config_flow": false,
+  "dependencies": ["utility_meter", "energy"],
   "documentation": "https://github.com/zeronounours/HA-custom-component-energy-meter",
   "integration_type": "helper",
-  "iot_class": "local_push"
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/zeronounours/HA-custom-component-energy-meter/issues",
+  "version": "0.1.0"
 }
