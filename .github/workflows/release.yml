@@ -10,6 +10,8 @@ jobs:
   release:
     name: Release integration
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
 
@@ -21,19 +23,19 @@ jobs:
           version="${version#v}"
           yq e -P -o=json \
             -i ".version = \"${version}\"" \
-            "${{ github.workspace }}/energy_meter/manifest.json"
+            "${{ github.workspace }}/custom_components/energy_meter/manifest.json"
 
       - name: Create zipped release package
         shell: bash
         run: |
-          cd "${{ github.workspace }}/energy_meter
+          cd "${{ github.workspace }}/custom_components/energy_meter"
           zip energy_meter.zip -r ./
 
       - name: Upload to release
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace }}/energy_meter/energy_meter.zip
+          file: ${{ github.workspace }}/custom_components/energy_meter/energy_meter.zip
           asset_name: energy_meter.zip
           tag: ${{ github.ref }}
           overwrite: true
