@@ -4,6 +4,8 @@
 [![License][license-shield]](LICENSE)
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
+![icon](img/icon.svg)
+
 The Energy Meter integration provides functionality to track consumptions of
 various utilities, like the builtin Utility Meter. But on top of it, it adds
 entities to track costs for each tariffs.
