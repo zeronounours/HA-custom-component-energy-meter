@@ -115,7 +115,7 @@ async def setup_utility_meter_select(
 ) -> str:
     """Create the select for utility_meters."""
     # Only create the select if multiple tariffs are created
-    if not conf[CONF_TARIFFS]:
+    if not conf.get(CONF_TARIFFS):
         _LOGGER.debug("Setup %s.%s: skip utility_meter select entity", DOMAIN, meter)
         return ""
 
@@ -147,7 +147,7 @@ async def setup_utility_meter_sensors(
     hass.data[DATA_UTILITY][meter] = conf.copy()
     hass.data[DATA_UTILITY][meter][DATA_TARIFF_SENSORS] = []
 
-    if not conf[CONF_TARIFFS]:
+    if not conf.get(CONF_TARIFFS):
         _LOGGER.debug(
             "Setup %s.%s: create a single utility_meter sensor",
             DOMAIN,
