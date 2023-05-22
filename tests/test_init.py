@@ -600,6 +600,7 @@ from custom_components.energy_meter.const import DOMAIN
             marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
     ],
+    indirect=("config",),
 )
 async def test_setup_and_check_created_sensors(hass, config, created_sensors):
     """Test the setup and tests created sensors."""

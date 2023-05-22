@@ -32,6 +32,14 @@ def auto_enable_custom_integrations(enable_custom_integrations):
     yield
 
 
+# Used to create a config with necessary sections to run tests
+@pytest.fixture(name="config")
+def config(request):
+    """Create a fixture to add config required for tests."""
+    with patch("homeassistant.components.recorder.ALLOW_IN_MEMORY_DB", True):
+        yield {"recorder": {"db_url": "sqlite:///:memory:"}} | request.param
+
+
 # Used to initialize the recorder
 @pytest.fixture(autouse=True)
 def auto_initialize_recorder(hass):
