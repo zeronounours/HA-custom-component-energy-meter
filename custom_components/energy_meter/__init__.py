@@ -17,7 +17,7 @@ from homeassistant.components.utility_meter import (
     METER_CONFIG_SCHEMA,
 )
 from homeassistant.const import CONF_NAME, CONF_UNIQUE_ID
-from homeassistant.core import HomeAssistant, split_entity_id
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers import discovery
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.typing import ConfigType
@@ -90,12 +90,10 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             um_conf[CONF_SOURCE_SENSOR] = cost_entity
 
             # force a friendly name from the cost entity
-            cost_state = hass.states.get(cost_entity)
-            if cost_state:
-                name = cost_state.name
-            else:
-                name = split_entity_id(cost_entity)[0].replace("_", " ")
-            um_conf[CONF_NAME] = name
+            name = um_conf.get(CONF_NAME)
+            if not name:
+                name = meter.replace("_", " ")
+            um_conf[CONF_NAME] = f"{name} Cost"
 
             # Prevent the reuse of the same unique_id as the
             # utility_meter sensors

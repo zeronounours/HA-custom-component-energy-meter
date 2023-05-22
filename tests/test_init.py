@@ -35,7 +35,7 @@ from custom_components.energy_meter.const import DOMAIN
             ],
         ),
         # Price entity No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -49,10 +49,9 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         # Fixed price entity No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -66,10 +65,9 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         # Price entity & fixed price No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -84,7 +82,6 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         #############
         # 2 TARIFFS #
@@ -170,7 +167,7 @@ from custom_components.energy_meter.const import DOMAIN
         # 2 ENERGY_METERS #
         ###################
         # 2 meters with same entity price No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -190,7 +187,6 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         # 2 meters with same entity price 2 tariff
         (
@@ -223,7 +219,7 @@ from custom_components.energy_meter.const import DOMAIN
             ],
         ),
         # 2 meters with same price No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -243,7 +239,6 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         # 2 meters with same price 2 tariff
         (
@@ -297,7 +292,7 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
+            marks=pytest.mark.xfail(reason="Currently under issue #3"),
         ),
         # 2 meters with different entity price 2 tariff
         pytest.param(
@@ -353,7 +348,7 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issues #2 and #3"),
+            marks=pytest.mark.xfail(reason="Currently under issue #3"),
         ),
         # 2 meters with different price 2 tariff
         pytest.param(
@@ -409,7 +404,7 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issues #2 and #3"),
+            marks=pytest.mark.xfail(reason="Currently under issues #3"),
         ),
         # 2 meters with different prices & entity 2 tariff
         pytest.param(
@@ -461,7 +456,7 @@ from custom_components.energy_meter.const import DOMAIN
             ],
         ),
         # Price entity No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -476,10 +471,9 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         # Fixed price entity No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -494,10 +488,9 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         # Price entity & fixed price No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -513,7 +506,6 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #2"),
         ),
         # No price 2 tariffs
         (
