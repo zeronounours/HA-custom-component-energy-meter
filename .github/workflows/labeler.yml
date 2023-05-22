@@ -1,4 +1,4 @@
-ame: Manage labels
+name: Manage labels
 
 on:
   push:
