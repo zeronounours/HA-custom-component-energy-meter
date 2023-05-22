@@ -37,7 +37,9 @@ def auto_enable_custom_integrations(enable_custom_integrations):
 def config(request):
     """Create a fixture to add config required for tests."""
     with patch("homeassistant.components.recorder.ALLOW_IN_MEMORY_DB", True):
-        yield {"recorder": {"db_url": "sqlite:///:memory:"}} | request.param
+        yield {"recorder": {"db_url": "sqlite:///:memory:"}} | (
+            request.param if hasattr(request, "param") else {}
+        )
 
 
 # Used to initialize the recorder
