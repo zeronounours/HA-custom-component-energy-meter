@@ -1,0 +1,24 @@
+-r requirements.tests.txt
+
+# For linting & code writing
+pylint
+pylint-per-file-ignores
+
+flake8
+flake8-builtins
+flake8-bugbear
+flake8-coding
+flake8-comprehensions
+flake8-commas
+flake8-docstrings
+flake8-logging-format
+pep8-naming
+flake8-string-format
+flake8-quotes
+flake8-executable
+flake8-import-order
+flake8-typing-imports
+
+black
+
+bandit

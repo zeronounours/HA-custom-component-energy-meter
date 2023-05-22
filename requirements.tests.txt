@@ -1,0 +1,12 @@
+# Strictly for tests
+coverage
+pytest
+pytest-asyncio
+pytest-cov
+pytest-homeassistant-custom-component
+
+homeassistant
+croniter
+psutil_home_assistant
+fnv_hash_fast
+aiohttp_cors

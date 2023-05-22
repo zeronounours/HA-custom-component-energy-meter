@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TEST_DIR="$(dirname "$(realpath "$0")")"
-GIT_DIR="$(dirname "$TEST_DIR")"
+GIT_DIR="$(dirname "$(dirname "$TEST_DIR")")"
 
 if [ -n "${1:+}" ]; then
   DOCKER="${1}"
@@ -22,7 +22,7 @@ $DOCKER create \
   --name "$NAME" \
   --publish "127.0.0.1:$PORT:$PORT" \
   --volume "$TEST_DIR/includes:/config/includes" \
-  --volume "$GIT_DIR/energy_meter:/config/custom_components/energy_meter" \
+  --volume "$GIT_DIR/custom_components/energy_meter:/config/custom_components/energy_meter" \
   "$IMAGE" > /dev/null
 
 $DOCKER cp "$TEST_DIR/config" "$NAME:/"
@@ -36,3 +36,5 @@ echo "Credentials are test:test"
 if which xdg-open &> /dev/null; then
   xdg-open "http://127.0.0.1:$PORT/test-dashboard/energy"
 fi
+
+$DOCKER logs -f "$NAME"

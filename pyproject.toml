@@ -31,6 +31,10 @@ import_heading_stdlib = "Standard libraries"
 import_heading_thirdparty = "Third party libraries"
 import_heading_firstparty = "Project imports"
 combine_as_imports = true
+known_first_party = [
+    "custom_components.energy_meter",
+    "tests",
+]
 
 [tool.pylint.MAIN]
 py-version = "3.10"
@@ -155,6 +159,10 @@ testpaths = [
 norecursedirs = [
     ".git",
 ]
+addopts = [
+    "--strict-markers",
+    "--cov=custom_components",
+]
 log_format = "%(asctime)s.%(msecs)03d %(levelname)-8s %(threadName)s %(name)s:%(filename)s:%(lineno)s %(message)s"
 log_date_format = "%Y-%m-%d %H:%M:%S"
 asyncio_mode = "auto"
@@ -218,3 +226,18 @@ fixture-parentheses = false
 
 [tool.ruff.mccabe]
 max-complexity = 25
+
+[tool.coverage.run]
+source = [
+    "custom_components",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplemented()",
+    "if __name__ == '__main__':",
+    "main()",
+]
+fail_under = 91
+show_missing = true

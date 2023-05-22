@@ -40,6 +40,7 @@ sensor:
 
 energy_meter:
   daily_energy:
+    unique_id: daily_energy_meter
     source: sensor.energy
     name: Daily Energy
     cycle: daily

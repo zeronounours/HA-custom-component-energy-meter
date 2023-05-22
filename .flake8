@@ -42,6 +42,7 @@ docstring-convention = pep257
 
 ; configure flake8-import-order
 import-order-style = google
+application-import-names = custom_components.energy_meter, tests
 
 ; configure darglint
 strictness=short
