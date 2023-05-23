@@ -1,4 +1,5 @@
 """Test energy_meter setup process."""
+
 # Third party libraries
 from homeassistant.setup import async_setup_component
 import pytest
@@ -45,7 +46,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
@@ -61,7 +62,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_daily_energy_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
@@ -78,7 +79,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
@@ -114,7 +115,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -134,7 +135,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_daily_energy_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -155,7 +156,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -181,7 +182,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
                 "sensor.monthly_energy",
@@ -205,7 +206,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -233,7 +234,8 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_daily_energy_cost",
+                "sensor.energy_monthly_energy_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
                 "sensor.monthly_energy",
@@ -257,7 +259,8 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_daily_energy_cost",
+                "sensor.energy_monthly_energy_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -271,7 +274,7 @@ from custom_components.energy_meter.const import DOMAIN
             ],
         ),
         # 2 meters with different entity price No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -285,17 +288,16 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
-                "sensor.energy_cost2",
+                "sensor.energy_price_cost",
+                "sensor.energy_price2_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #3"),
         ),
         # 2 meters with different entity price 2 tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -311,8 +313,8 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
-                "sensor.energy_cost2",
+                "sensor.energy_price_cost",
+                "sensor.energy_price2_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -324,10 +326,9 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy_cost_offpeak",
                 "select.monthly_energy",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #3"),
         ),
         # 2 meters with different price No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -341,17 +342,16 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
-                "sensor.energy_cost2",
+                "sensor.energy_daily_energy_cost",
+                "sensor.energy_monthly_energy_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #3"),
         ),
         # 2 meters with different price 2 tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -367,8 +367,8 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
-                "sensor.energy_cost2",
+                "sensor.energy_daily_energy_cost",
+                "sensor.energy_monthly_energy_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -380,10 +380,9 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy_cost_offpeak",
                 "select.monthly_energy",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #3"),
         ),
         # 2 meters with different prices & entity No tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -397,17 +396,16 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
-                "sensor.energy_cost2",
+                "sensor.energy_price_cost",
+                "sensor.energy_monthly_energy_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
                 "sensor.monthly_energy",
                 "sensor.monthly_energy_cost",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issues #3"),
         ),
         # 2 meters with different prices & entity 2 tariff
-        pytest.param(
+        (
             {
                 DOMAIN: {
                     "daily_energy": {
@@ -423,8 +421,8 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
-                "sensor.energy_cost2",
+                "sensor.energy_price_cost",
+                "sensor.energy_monthly_energy_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -436,7 +434,6 @@ from custom_components.energy_meter.const import DOMAIN
                 "sensor.monthly_energy_cost_offpeak",
                 "select.monthly_energy",
             ],
-            marks=pytest.mark.xfail(reason="Currently under issue #3"),
         ),
         ##############
         # Unique IDs #
@@ -467,7 +464,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
@@ -484,7 +481,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_daily_energy_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
@@ -502,7 +499,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy",
                 "sensor.daily_energy_cost",
             ],
@@ -537,7 +534,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -558,7 +555,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_daily_energy_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -580,7 +577,7 @@ from custom_components.energy_meter.const import DOMAIN
                 },
             },
             [
-                "sensor.energy_cost",
+                "sensor.energy_price_cost",
                 "sensor.daily_energy_peak",
                 "sensor.daily_energy_offpeak",
                 "sensor.daily_energy_cost_peak",
@@ -608,3 +605,9 @@ async def test_setup_and_check_created_sensors(hass, config, created_sensors):
     for sensor in created_sensors:
         assert sensor in entities
     assert len(entities) == len(created_sensors) + 3  # add 2 for sensor.energy & prices
+
+
+#
+#    # ensure no error where logged
+#    for record in caplog.records:
+#        assert record.levelno < logging.ERROR

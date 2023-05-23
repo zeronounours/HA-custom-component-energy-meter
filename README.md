@@ -84,6 +84,30 @@ energy_meter:
       - offpeak
 ```
 
+Usually, source energy sensors shares the same price. In order to prevent
+configuration issues when changing it in a config, it is advised to use the
+anchor feature of YAML:
+
+```yaml
+energy_meter:
+  daily_energy:
+    source: sensor.energy
+    name: Daily Energy
+    cycle: daily
+    price_entity: &entity-price sensor.current_energy_price
+    tariffs:
+      - peak
+      - offpeak
+  monthly_energy:
+    source: sensor.energy
+    name: Monthly Energy
+    cycle: monthly
+    price: *entity-price
+    tariffs:
+      - peak
+      - offpeak
+```
+
 [releases-shield]:
   https://img.shields.io/github/release/zeronounours/HA-custom-component-energy-meter.svg?style=for-the-badge
 [releases]:

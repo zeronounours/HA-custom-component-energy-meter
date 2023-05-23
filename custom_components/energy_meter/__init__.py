@@ -30,6 +30,7 @@ from .const import (
     DATA_ENERGY_METER,
     DOMAIN,
 )
+from .utils import conf_to_cost_sensor_id
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -76,14 +77,16 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
         if conf.get(CONF_PRICE) is not None or conf.get(CONF_PRICE_ENTITY) is not None:
             # cost sensor
             # Only create a new one if none have been created before.
-            # Prevent entity_id issues when 2 energy_meters follow the
-            # same source
-            energy_source = conf[CONF_SOURCE_SENSOR]
-            if energy_source in hass.data[DATA_ENERGY_METER]:
-                cost_entity = hass.data[DATA_ENERGY_METER][energy_source]
+            # The creation of sensors is done as following:
+            #   - for fixed price, cost sensor is bound to the meter id
+            #   - for entity price, cost sensor is bound to the entity
+            #     price id
+            cache_key = conf_to_cost_sensor_id(meter, conf)
+            if cache_key in hass.data[DATA_ENERGY_METER]:
+                cost_entity = hass.data[DATA_ENERGY_METER][cache_key]
             else:
-                cost_entity = await setup_energy_cost_sensor(hass, config, conf)
-                hass.data[DATA_ENERGY_METER][energy_source] = cost_entity
+                cost_entity = await setup_energy_cost_sensor(hass, config, meter, conf)
+                hass.data[DATA_ENERGY_METER][cache_key] = cost_entity
 
             # utility_meter
             um_conf = conf.copy()
@@ -200,6 +203,7 @@ async def setup_utility_meter_sensors(
 async def setup_energy_cost_sensor(
     hass: HomeAssistant,
     config: ConfigType,
+    meter: str,
     meter_conf: dict,
 ):
     """Create a cost sensor to follow an energy sensor."""
@@ -213,7 +217,7 @@ async def setup_energy_cost_sensor(
             hass,
             SENSOR_DOMAIN,
             DOMAIN,
-            {CONF_CONF: meter_conf},
+            {CONF_METER: meter, CONF_CONF: meter_conf},
             config,
         ),
     )
