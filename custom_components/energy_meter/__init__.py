@@ -221,4 +221,4 @@ async def setup_energy_cost_sensor(
             config,
         ),
     )
-    return f"{meter_conf[CONF_SOURCE_SENSOR]}_cost"
+    return f"sensor.{'_'.join(conf_to_cost_sensor_id(meter, meter_conf))}_cost"

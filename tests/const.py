@@ -572,3 +572,203 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "select.daily_energy",
     ],
 ]
+
+CHECK_UM_SOURCES_EXPECTED_RESULTS = [
+    #############
+    # NO CONFIG #
+    #############
+    # No config
+    {},
+    #############
+    # NO TARIFF #
+    #############
+    # No price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+    },
+    # Price entity No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_price_cost",
+    },
+    # Fixed price entity No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_price_cost",
+    },
+    #############
+    # 2 TARIFFS #
+    #############
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    ###################
+    # 2 ENERGY_METERS #
+    ###################
+    # 2 meters with same entity price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_price_cost",
+        "sensor.monthly_energy": "sensor.energy",
+        "sensor.monthly_energy_cost": "sensor.energy_price_cost",
+    },
+    # 2 meters with same entity price 2 tariff
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+        "sensor.monthly_energy_peak": "sensor.energy",
+        "sensor.monthly_energy_offpeak": "sensor.energy",
+        "sensor.monthly_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.monthly_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # 2 meters with same price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
+        "sensor.monthly_energy": "sensor.energy",
+        "sensor.monthly_energy_cost": "sensor.energy_monthly_energy_cost",
+    },
+    # 2 meters with same price 2 tariff
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+        "sensor.monthly_energy_peak": "sensor.energy",
+        "sensor.monthly_energy_offpeak": "sensor.energy",
+        "sensor.monthly_energy_cost_peak": "sensor.energy_monthly_energy_cost",
+        "sensor.monthly_energy_cost_offpeak": "sensor.energy_monthly_energy_cost",
+    },
+    # 2 meters with different entity price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_price_cost",
+        "sensor.monthly_energy": "sensor.energy",
+        "sensor.monthly_energy_cost": "sensor.energy_price2_cost",
+    },
+    # 2 meters with different entity price 2 tariff
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+        "sensor.monthly_energy_peak": "sensor.energy",
+        "sensor.monthly_energy_offpeak": "sensor.energy",
+        "sensor.monthly_energy_cost_peak": "sensor.energy_price2_cost",
+        "sensor.monthly_energy_cost_offpeak": "sensor.energy_price2_cost",
+    },
+    # 2 meters with different price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
+        "sensor.monthly_energy": "sensor.energy",
+        "sensor.monthly_energy_cost": "sensor.energy_monthly_energy_cost",
+    },
+    # 2 meters with different price 2 tariff
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+        "sensor.monthly_energy_peak": "sensor.energy",
+        "sensor.monthly_energy_offpeak": "sensor.energy",
+        "sensor.monthly_energy_cost_peak": "sensor.energy_monthly_energy_cost",
+        "sensor.monthly_energy_cost_offpeak": "sensor.energy_monthly_energy_cost",
+    },
+    # 2 meters with different prices & entity No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_price_cost",
+        "sensor.monthly_energy": "sensor.energy",
+        "sensor.monthly_energy_cost": "sensor.energy_monthly_energy_cost",
+    },
+    # 2 meters with different prices & entity 2 tariff
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+        "sensor.monthly_energy_peak": "sensor.energy",
+        "sensor.monthly_energy_offpeak": "sensor.energy",
+        "sensor.monthly_energy_cost_peak": "sensor.energy_monthly_energy_cost",
+        "sensor.monthly_energy_cost_offpeak": "sensor.energy_monthly_energy_cost",
+    },
+    ##############
+    # Unique IDs #
+    ##############
+    # No price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+    },
+    # Price entity No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_price_cost",
+    },
+    # Fixed price entity No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price No tariff
+    {
+        "sensor.daily_energy": "sensor.energy",
+        "sensor.daily_energy_cost": "sensor.energy_price_cost",
+    },
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+]
