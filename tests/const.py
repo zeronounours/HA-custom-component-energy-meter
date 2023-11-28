@@ -322,6 +322,93 @@ TEST_CASES = [
             },
         },
     },
+    ##################################
+    # Create only Energy cost sensor #
+    ##################################
+    # No price No tariff
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "create_utility_meter": "no",
+            },
+        },
+    },
+    # Price entity No tariff
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "create_utility_meter": "no",
+            },
+        },
+    },
+    # Fixed price entity No tariff
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "price": 2,
+                "create_utility_meter": "no",
+            },
+        },
+    },
+    # Price entity & fixed price No tariff
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "price": 2,
+                "create_utility_meter": "no",
+            },
+        },
+    },
+    # No price 2 tariffs
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "no",
+            },
+        },
+    },
+    # Price entity 2 tariffs
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "no",
+            },
+        },
+    },
+    # Fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "no",
+            },
+        },
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "energy_cost_only": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "no",
+            },
+        },
+    },
 ]
 
 
@@ -571,6 +658,37 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
+    ##################################
+    # Create only Energy cost sensor #
+    ##################################
+    # No price No tariff
+    [],
+    # Price entity No tariff
+    [
+        "sensor.energy_price_cost",
+    ],
+    # Fixed price entity No tariff
+    [
+        "sensor.energy_energy_cost_only_cost",
+    ],
+    # Price entity & fixed price No tariff
+    [
+        "sensor.energy_price_cost",
+    ],
+    # No price 2 tariffs
+    [],
+    # Price entity 2 tariffs
+    [
+        "sensor.energy_price_cost",
+    ],
+    # Fixed price 2 tariffs
+    [
+        "sensor.energy_energy_cost_only_cost",
+    ],
+    # Price entity & fixed price 2 tariffs
+    [
+        "sensor.energy_price_cost",
+    ],
 ]
 
 CHECK_UM_SOURCES_EXPECTED_RESULTS = [
@@ -771,4 +889,24 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
+    ##################################
+    # Create only Energy cost sensor #
+    ##################################
+    # Energy cost only does not have utility meter to track source
+    # No price No tariff
+    {},
+    # Price entity No tariff
+    {},
+    # Fixed price entity No tariff
+    {},
+    # Price entity & fixed price No tariff
+    {},
+    # No price 2 tariffs
+    {},
+    # Price entity 2 tariffs
+    {},
+    # Fixed price 2 tariffs
+    {},
+    # Price entity & fixed price 2 tariffs
+    {},
 ]

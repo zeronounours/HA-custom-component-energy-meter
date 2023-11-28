@@ -27,6 +27,7 @@ from .const import (
     CONF_CONF,
     CONF_PRICE,
     CONF_PRICE_ENTITY,
+    CONF_UTILITY_METER,
     DATA_ENERGY_METER,
     DOMAIN,
 )
@@ -42,6 +43,7 @@ ENERGY_METER_CONFIG_SCHEMA = vol.Schema(
             {
                 vol.Optional(CONF_PRICE): cv.positive_float,
                 vol.Optional(CONF_PRICE_ENTITY): cv.entity_id,
+                vol.Optional(CONF_UTILITY_METER): cv.boolean,
             },
         ),
         *METER_CONFIG_SCHEMA.schema.validators[1:],
@@ -66,12 +68,21 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     for meter, conf in config[DOMAIN].items():
         _LOGGER.debug("Setup %s.%s", DOMAIN, meter)
 
-        # create the select entity
-        select_entity = await setup_utility_meter_select(hass, config, meter, conf)
+        create_utility_meter = conf.get(CONF_UTILITY_METER, True)
 
-        # Create the utility_meters for the energy
-        um_conf = conf.copy()
-        await setup_utility_meter_sensors(hass, config, meter, um_conf, select_entity)
+        if create_utility_meter:
+            # create the select entity
+            select_entity = await setup_utility_meter_select(hass, config, meter, conf)
+
+            # Create the utility_meters for the energy
+            um_conf = conf.copy()
+            await setup_utility_meter_sensors(
+                hass,
+                config,
+                meter,
+                um_conf,
+                select_entity,
+            )
 
         # Create the sensor & utility_meters for the energy cost
         if conf.get(CONF_PRICE) is not None or conf.get(CONF_PRICE_ENTITY) is not None:
@@ -88,28 +99,29 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
                 cost_entity = await setup_energy_cost_sensor(hass, config, meter, conf)
                 hass.data[DATA_ENERGY_METER][cache_key] = cost_entity
 
-            # utility_meter
-            um_conf = conf.copy()
-            um_conf[CONF_SOURCE_SENSOR] = cost_entity
+            if create_utility_meter:
+                # utility_meter
+                um_conf = conf.copy()
+                um_conf[CONF_SOURCE_SENSOR] = cost_entity
 
-            # force a friendly name from the cost entity
-            name = um_conf.get(CONF_NAME)
-            if not name:
-                name = meter.replace("_", " ")
-            um_conf[CONF_NAME] = f"{name} Cost"
+                # force a friendly name from the cost entity
+                name = um_conf.get(CONF_NAME)
+                if not name:
+                    name = meter.replace("_", " ")
+                um_conf[CONF_NAME] = f"{name} Cost"
 
-            # Prevent the reuse of the same unique_id as the
-            # utility_meter sensors
-            if um_conf.get(CONF_UNIQUE_ID):
-                um_conf[CONF_UNIQUE_ID] = f"{um_conf[CONF_UNIQUE_ID]}_cost"
+                # Prevent the reuse of the same unique_id as the
+                # utility_meter sensors
+                if um_conf.get(CONF_UNIQUE_ID):
+                    um_conf[CONF_UNIQUE_ID] = f"{um_conf[CONF_UNIQUE_ID]}_cost"
 
-            await setup_utility_meter_sensors(
-                hass,
-                config,
-                f"{meter}_cost",
-                um_conf,
-                select_entity,
-            )
+                await setup_utility_meter_sensors(
+                    hass,
+                    config,
+                    f"{meter}_cost",
+                    um_conf,
+                    select_entity,
+                )
 
     return True
 

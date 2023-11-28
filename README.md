@@ -33,11 +33,13 @@ the custom component.
 
 ## Configuration
 
+### Basic configuration
+
 The configuration of the component is mostly the same as the builtin
 `utility_meter` integration:
 https://www.home-assistant.io/integrations/utility_meter/
 
-The only difference is the addition of `price` and `price_entity` options:
+The main difference is the addition of `price` and `price_entity` options:
 
 ---
 
@@ -62,6 +64,20 @@ Only one of `price` or `price_entity` should be given. If both are given,
 `price_entity` would have precedence. If none is defined, this integration will
 act as a basic utility meter, with no cost tracking.
 
+### Energy cost sensor only
+
+If the use of utility meter is unwanted and you only want energy costs, it is
+possible to set option `create_utility_meter` to `false`
+
+---
+
+**create_utility_meter** _boolean (optional)_
+
+Whether to create a utility meter for the energy and energy costs. If set to
+`false` only the energy cost entity will be created. Defaults to `true`.
+
+---
+
 ## Example
 
 ```yaml
@@ -82,6 +98,12 @@ energy_meter:
     tariffs:
       - peak
       - offpeak
+
+  energy_costs_only:
+    name: Energy Costs
+    source: sensor.energy
+    price: 0.20
+    create_utility_meter: false
 ```
 
 Usually, source energy sensors shares the same price. In order to prevent
