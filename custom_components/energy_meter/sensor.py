@@ -18,7 +18,7 @@ from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
-from .const import CONF_CONF, CONF_PRICE, CONF_PRICE_ENTITY
+from .const import CONF_ADAPTER, CONF_CONF, CONF_PRICE, CONF_PRICE_ENTITY
 from .utils import conf_to_cost_sensor_id
 
 _LOGGER = logging.getLogger(__name__)
@@ -40,18 +40,21 @@ async def async_setup_platform(
 
     conf = discovery_info[CONF_CONF]
     meter = discovery_info[CONF_METER]
+    adapter = discovery_info[CONF_ADAPTER]
     source = conf[CONF_SOURCE_SENSOR]
     price = conf.get(CONF_PRICE)
     price_entity = conf.get(CONF_PRICE_ENTITY)
 
+    config = {
+        adapter.stat_energy_key: source,
+        adapter.total_money_key: None,
+        "entity_energy_price": price_entity,
+        "number_energy_price": price,
+    }
+
     async_add_entities(
         [
-            EnergyCostSensor(
-                source,
-                price,
-                price_entity,
-                conf_to_cost_sensor_id(meter, conf),
-            ),
+            EnergyCostSensor(adapter, config, conf_to_cost_sensor_id(meter, conf)),
         ],
     )
 
@@ -67,28 +70,12 @@ class EnergyCostSensor(BaseEnergyCostSensor):
 
     def __init__(
         self,
-        source_entity: str,
-        price: float | None,
-        price_entity: str | None,
+        adapter: SourceAdapter,
+        config: dict,
         sensor_id: tuple[str],
     ) -> None:
         """Initialize the sensor."""
-        super().__init__(
-            SourceAdapter(
-                source_type="grid",
-                flow_type="flow_from",
-                stat_energy_key="stat_energy_from",
-                total_money_key="stat_cost",
-                name_suffix="Cost",
-                entity_id_suffix="cost",
-            ),
-            {
-                "stat_energy_from": source_entity,
-                "stat_cost": None,
-                "entity_energy_price": price_entity,
-                "number_energy_price": price,
-            },
-        )
+        super().__init__(adapter, config)
         # override the entity_id
         self._sensor_id = sensor_id
         suggested_entity_id = (

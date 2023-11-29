@@ -3,6 +3,10 @@
 import logging
 
 # Third party libraries
+from homeassistant.components.energy.sensor import (
+    SOURCE_ADAPTERS,
+    SourceAdapter,
+)
 from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
 from homeassistant.components.sensor import DOMAIN as SENSOR_DOMAIN
 from homeassistant.components.utility_meter import (
@@ -24,9 +28,11 @@ from homeassistant.helpers.typing import ConfigType
 import voluptuous as vol
 
 from .const import (
+    CONF_ADAPTER,
     CONF_CONF,
     CONF_PRICE,
     CONF_PRICE_ENTITY,
+    CONF_SOURCE_TYPE,
     CONF_UTILITY_METER,
     DATA_ENERGY_METER,
     DOMAIN,
@@ -34,6 +40,14 @@ from .const import (
 from .utils import conf_to_cost_sensor_id
 
 _LOGGER = logging.getLogger(__name__)
+
+
+SOURCE_TYPE_TO_SOURCE_ADAPTER = {
+    "from_grid": ("grid", "flow_from"),
+    "to_grid": ("grid", "flow_to"),
+    "gas": ("gas", None),
+    "water": ("water", None),
+}
 
 
 # update the default schema w/ new options
@@ -44,6 +58,9 @@ ENERGY_METER_CONFIG_SCHEMA = vol.Schema(
                 vol.Optional(CONF_PRICE): cv.positive_float,
                 vol.Optional(CONF_PRICE_ENTITY): cv.entity_id,
                 vol.Optional(CONF_UTILITY_METER): cv.boolean,
+                vol.Optional(CONF_SOURCE_TYPE): vol.Any(
+                    *SOURCE_TYPE_TO_SOURCE_ADAPTER.keys(),
+                ),
             },
         ),
         *METER_CONFIG_SCHEMA.schema.validators[1:],
@@ -92,11 +109,19 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             #   - for fixed price, cost sensor is bound to the meter id
             #   - for entity price, cost sensor is bound to the entity
             #     price id
-            cache_key = conf_to_cost_sensor_id(meter, conf)
+            sensor_id = conf_to_cost_sensor_id(meter, conf)
+            adapter = get_energy_cost_sensor_adapter(conf)
+            cache_key = (sensor_id, adapter.entity_id_suffix)
             if cache_key in hass.data[DATA_ENERGY_METER]:
                 cost_entity = hass.data[DATA_ENERGY_METER][cache_key]
             else:
-                cost_entity = await setup_energy_cost_sensor(hass, config, meter, conf)
+                cost_entity = await setup_energy_cost_sensor(
+                    hass,
+                    config,
+                    meter,
+                    conf,
+                    adapter,
+                )
                 hass.data[DATA_ENERGY_METER][cache_key] = cost_entity
 
             if create_utility_meter:
@@ -108,17 +133,19 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
                 name = um_conf.get(CONF_NAME)
                 if not name:
                     name = meter.replace("_", " ")
-                um_conf[CONF_NAME] = f"{name} Cost"
+                um_conf[CONF_NAME] = f"{name} {adapter.name_suffix}"
 
                 # Prevent the reuse of the same unique_id as the
                 # utility_meter sensors
                 if um_conf.get(CONF_UNIQUE_ID):
-                    um_conf[CONF_UNIQUE_ID] = f"{um_conf[CONF_UNIQUE_ID]}_cost"
+                    um_conf[
+                        CONF_UNIQUE_ID
+                    ] = f"{um_conf[CONF_UNIQUE_ID]}_{adapter.entity_id_suffix}"
 
                 await setup_utility_meter_sensors(
                     hass,
                     config,
-                    f"{meter}_cost",
+                    f"{meter}_{adapter.entity_id_suffix}",
                     um_conf,
                     select_entity,
                 )
@@ -217,6 +244,7 @@ async def setup_energy_cost_sensor(
     config: ConfigType,
     meter: str,
     meter_conf: dict,
+    adapter: SourceAdapter,
 ):
     """Create a cost sensor to follow an energy sensor."""
     _LOGGER.debug(
@@ -229,8 +257,38 @@ async def setup_energy_cost_sensor(
             hass,
             SENSOR_DOMAIN,
             DOMAIN,
-            {CONF_METER: meter, CONF_CONF: meter_conf},
+            {CONF_METER: meter, CONF_CONF: meter_conf, CONF_ADAPTER: adapter},
             config,
         ),
     )
-    return f"sensor.{'_'.join(conf_to_cost_sensor_id(meter, meter_conf))}_cost"
+    # return the entity id
+    return (
+        f"sensor."
+        f"{'_'.join(conf_to_cost_sensor_id(meter, meter_conf))}"
+        f"_{adapter.entity_id_suffix}"
+    )
+
+
+def get_energy_cost_sensor_adapter(conf: dict):
+    """Resolve the SourceAdapter from config."""
+    # resolve source adapter from source_type
+    source_type = conf.get(CONF_SOURCE_TYPE, "from_grid")
+    _LOGGER.debug("Setup %s: setup energy cost sensor of type %s", DOMAIN, source_type)
+
+    if source_type not in SOURCE_TYPE_TO_SOURCE_ADAPTER:
+        # should never happen if config validation is correctly set
+        _LOGGER.error("Unknown source type configured: %s", source_type)
+        return None
+
+    source_adapter = SOURCE_TYPE_TO_SOURCE_ADAPTER[source_type]
+
+    for adapter in SOURCE_ADAPTERS:
+        # find the right
+        if (adapter.source_type, adapter.flow_type) == source_adapter:
+            return adapter
+    # should not happened unless builtin adapter changes
+    _LOGGER.error(
+        "Failed to find an appropriate source adapter for type %s",
+        source_type,
+    )
+    return None
