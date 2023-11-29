@@ -78,7 +78,7 @@ Whether to create a utility meter for the energy and energy costs. If set to
 
 ---
 
-## Example
+### Examples
 
 ```yaml
 energy_meter:
@@ -128,6 +128,41 @@ energy_meter:
     tariffs:
       - peak
       - offpeak
+```
+
+## Services
+
+This integration works on top of the builtin Utility Meter. It does not provide
+additional services, but all builtin services are compatible with it.
+
+### Reset
+
+To reset the energy meters, rely on service `utility_meter.reset`:
+
+```yaml
+service: utility_meter.reset
+target:
+  entity_id: select.daily_energy
+```
+
+The reset will reset all sensors which relies on the same select, including:
+
+- the energy sensor of each tariff
+- the energy cost sensor of each tariff
+
+_Note_: like with builtin utility meter, it is not possible to reset a meter
+which do not have tariff. Instead, use the service [Calibrate](#calibrate)
+
+### Calibrate
+
+To reset the energy meters, rely on service `utility_meter.calibrate`:
+
+```yaml
+service: utility_meter.calibrate
+data:
+  value: "3"
+target:
+  entity_id: sensor.daily_energy_cost_offpeak
 ```
 
 [releases-shield]:
