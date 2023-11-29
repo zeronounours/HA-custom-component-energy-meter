@@ -33,6 +33,9 @@ the custom component.
 
 ## Configuration
 
+All configuration should be added to the `configurations.yaml` file. No GUI
+configuration is currently supported.
+
 ### Basic configuration
 
 The configuration of the component is mostly the same as the builtin
@@ -81,6 +84,7 @@ Whether to create a utility meter for the energy and energy costs. If set to
 ### Examples
 
 ```yaml
+# in configurations.yaml
 energy_meter:
   daily_energy:
     source: sensor.energy
