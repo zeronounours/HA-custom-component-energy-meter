@@ -6,6 +6,7 @@ views:
       - type: entities
         entities:
           - input_number.energy_price
+          - input_number.energy_price2
           - input_number.power
           - type: section
           - select.daily_energy
@@ -24,14 +25,24 @@ views:
               service: utility_meter.reset
               target:
                 entity_id: select.monthly_energy
+          - type: button
+            name: Reset yearly meter
+            tap_action:
+              action: call-service
+              service: utility_meter.reset
+              target:
+                entity_id: select.yearly_energy
 
       - type: entities
         entities:
           - sensor.energy_price
+          - sensor.energy_price2
           - sensor.power
           - sensor.energy
+          - sensor.energy2
           - type: section
-          - sensor.energy_cost
+          - sensor.energy_energy_price_cost
+          - sensor.energy2_energy_price2_cost
           - type: section
           - sensor.daily_energy_peak
           - sensor.daily_energy_offpeak
