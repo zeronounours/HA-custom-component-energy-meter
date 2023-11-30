@@ -110,7 +110,9 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
             #   - for entity price, cost sensor is bound to the entity
             #     price id
             sensor_id = conf_to_cost_sensor_id(meter, conf)
-            adapter = get_energy_cost_sensor_adapter(conf)
+            if (adapter := get_energy_cost_sensor_adapter(conf)) is None:
+                # stop here as we cannot create a cost sensor
+                continue
             cache_key = (sensor_id, adapter.entity_id_suffix)
             if cache_key in hass.data[DATA_ENERGY_METER]:
                 cost_entity = hass.data[DATA_ENERGY_METER][cache_key]
@@ -277,7 +279,11 @@ def get_energy_cost_sensor_adapter(conf: dict):
 
     if source_type not in SOURCE_TYPE_TO_SOURCE_ADAPTER:
         # should never happen if config validation is correctly set
-        _LOGGER.error("Unknown source type configured: %s", source_type)
+        _LOGGER.error(
+            "Setup %s: Unknown source type configured: %s",
+            DOMAIN,
+            source_type,
+        )
         return None
 
     source_adapter = SOURCE_TYPE_TO_SOURCE_ADAPTER[source_type]
@@ -288,7 +294,8 @@ def get_energy_cost_sensor_adapter(conf: dict):
             return adapter
     # should not happened unless builtin adapter changes
     _LOGGER.error(
-        "Failed to find an appropriate source adapter for type %s",
+        "Setup %s: Failed to find an appropriate source adapter for type %s",
+        DOMAIN,
         source_type,
     )
     return None

@@ -18,7 +18,13 @@ from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
 
-from .const import CONF_ADAPTER, CONF_CONF, CONF_PRICE, CONF_PRICE_ENTITY
+from .const import (
+    CONF_ADAPTER,
+    CONF_CONF,
+    CONF_PRICE,
+    CONF_PRICE_ENTITY,
+    DOMAIN,
+)
 from .utils import conf_to_cost_sensor_id
 
 _LOGGER = logging.getLogger(__name__)
@@ -33,8 +39,9 @@ async def async_setup_platform(
     """Set up the cost sensor."""
     if discovery_info is None:
         _LOGGER.error(
-            "This platform is not available to configure "
+            "Setup %s: This platform is not available to configure "
             "from 'sensor:' in configuration.yaml",
+            DOMAIN,
         )
         return
 
