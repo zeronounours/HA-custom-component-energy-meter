@@ -25,13 +25,6 @@ views:
               service: utility_meter.reset
               target:
                 entity_id: select.monthly_energy
-          - type: button
-            name: Reset yearly meter
-            tap_action:
-              action: call-service
-              service: utility_meter.reset
-              target:
-                entity_id: select.yearly_energy
 
       - type: entities
         entities:
@@ -43,6 +36,7 @@ views:
           - type: section
           - sensor.energy_energy_price_cost
           - sensor.energy2_energy_price2_cost
+          - sensor.energy2_energy_price2_compensation
           - type: section
           - sensor.daily_energy_peak
           - sensor.daily_energy_offpeak
@@ -56,3 +50,100 @@ views:
           - type: section
           - sensor.yearly_energy
           - sensor.yearly_energy_cost
+          - type: section
+          - sensor.daily_energy_to_grid_peak
+          - sensor.daily_energy_to_grid_offpeak
+          - sensor.daily_energy_to_grid_compensation_peak
+          - sensor.daily_energy_to_grid_compensation_offpeak
+
+  - title: Gas
+    path: gas
+    cards:
+      - type: entities
+        entities:
+          - input_number.gas_price
+          - input_number.gas_flow
+          - type: section
+          - select.daily_gas
+          - select.monthly_gas
+          - type: button
+            name: Reset daily meter
+            tap_action:
+              action: call-service
+              service: utility_meter.reset
+              target:
+                entity_id: select.daily_gas
+          - type: button
+            name: Reset monthly meter
+            tap_action:
+              action: call-service
+              service: utility_meter.reset
+              target:
+                entity_id: select.monthly_gas
+
+      - type: entities
+        entities:
+          - sensor.gas_price
+          - sensor.gas_flow
+          - sensor.gas
+          - type: section
+          - sensor.gas_gas_price_cost
+          - type: section
+          - sensor.daily_gas_peak
+          - sensor.daily_gas_offpeak
+          - sensor.daily_gas_cost_peak
+          - sensor.daily_gas_cost_offpeak
+          - type: section
+          - sensor.monthly_gas_peak
+          - sensor.monthly_gas_offpeak
+          - sensor.monthly_gas_cost_peak
+          - sensor.monthly_gas_cost_offpeak
+          - type: section
+          - sensor.yearly_gas
+          - sensor.yearly_gas_cost
+
+  - title: Water
+    path: water
+    cards:
+      - type: entities
+        entities:
+          - input_number.water_price
+          - input_number.water_flow
+          - type: section
+          - select.daily_water
+          - select.monthly_water
+          - type: button
+            name: Reset daily meter
+            tap_action:
+              action: call-service
+              service: utility_meter.reset
+              target:
+                entity_id: select.daily_water
+          - type: button
+            name: Reset monthly meter
+            tap_action:
+              action: call-service
+              service: utility_meter.reset
+              target:
+                entity_id: select.monthly_water
+
+      - type: entities
+        entities:
+          - sensor.water_price
+          - sensor.water_flow
+          - sensor.water
+          - type: section
+          - sensor.water_water_price_cost
+          - type: section
+          - sensor.daily_water_peak
+          - sensor.daily_water_offpeak
+          - sensor.daily_water_cost_peak
+          - sensor.daily_water_cost_offpeak
+          - type: section
+          - sensor.monthly_water_peak
+          - sensor.monthly_water_offpeak
+          - sensor.monthly_water_cost_peak
+          - sensor.monthly_water_cost_offpeak
+          - type: section
+          - sensor.yearly_water
+          - sensor.yearly_water_cost
