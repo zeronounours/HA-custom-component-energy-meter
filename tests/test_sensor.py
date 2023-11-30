@@ -5,6 +5,9 @@ from unittest.mock import patch
 # Third party libraries
 from homeassistant.setup import async_setup_component
 
+# Project imports
+from tests.utils import assert_logger
+
 
 async def test_direct_setup_exception(hass, config):
     """Test direct setup of the sensor raise an error."""
@@ -16,6 +19,6 @@ async def test_direct_setup_exception(hass, config):
         )
         await hass.async_block_till_done()
         # assert an error is logged
-        logger.error.assert_called()
+        assert_logger(logger, "error")
         # no sensor created
         assert len(hass.states.async_entity_ids()) == 0
