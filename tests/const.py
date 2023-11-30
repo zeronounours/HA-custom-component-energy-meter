@@ -322,6 +322,53 @@ TEST_CASES = [
             },
         },
     },
+    ################################
+    # Create utility meter defined #
+    ################################
+    # No price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "yes",
+            },
+        },
+    },
+    # Price entity 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "yes",
+            },
+        },
+    },
+    # Fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "yes",
+            },
+        },
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "create_utility_meter": "yes",
+            },
+        },
+    },
     ##################################
     # Create only Energy cost sensor #
     ##################################
@@ -406,6 +453,194 @@ TEST_CASES = [
                 "price": 2,
                 "tariffs": ["peak", "offpeak"],
                 "create_utility_meter": "no",
+            },
+        },
+    },
+    #########################
+    # from_grid source_type #
+    #########################
+    # No price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "from_grid",
+            },
+        },
+    },
+    # Price entity 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "from_grid",
+            },
+        },
+    },
+    # Fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "from_grid",
+            },
+        },
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "from_grid",
+            },
+        },
+    },
+    #######################
+    # to_grid source_type #
+    #######################
+    # No price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "to_grid",
+            },
+        },
+    },
+    # Price entity 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "to_grid",
+            },
+        },
+    },
+    # Fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "to_grid",
+            },
+        },
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "to_grid",
+            },
+        },
+    },
+    ###################
+    # gas source_type #
+    ###################
+    # No price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "gas",
+            },
+        },
+    },
+    # Price entity 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "gas",
+            },
+        },
+    },
+    # Fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "gas",
+            },
+        },
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "gas",
+            },
+        },
+    },
+    #####################
+    # water source_type #
+    #####################
+    # No price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "water",
+            },
+        },
+    },
+    # Price entity 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "water",
+            },
+        },
+    },
+    # Fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "water",
+            },
+        },
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        DOMAIN: {
+            "daily_energy": {
+                "source": "sensor.energy",
+                "price_entity": "sensor.price",
+                "price": 2,
+                "tariffs": ["peak", "offpeak"],
+                "source_type": "water",
             },
         },
     },
@@ -658,6 +893,42 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
+    ################################
+    # Create utility meter defined #
+    ################################
+    # No price 2 tariffs
+    [
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Fixed price 2 tariffs
+    [
+        "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity & fixed price 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
     ##################################
     # Create only Energy cost sensor #
     ##################################
@@ -688,6 +959,150 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     # Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
+    ],
+    #########################
+    # from_grid source_type #
+    #########################
+    # No price 2 tariffs
+    [
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Fixed price 2 tariffs
+    [
+        "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity & fixed price 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    #######################
+    # to_grid source_type #
+    #######################
+    # No price 2 tariffs
+    [
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity 2 tariffs
+    [
+        "sensor.energy_price_compensation",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_compensation_peak",
+        "sensor.daily_energy_compensation_offpeak",
+        "select.daily_energy",
+    ],
+    # Fixed price 2 tariffs
+    [
+        "sensor.energy_daily_energy_compensation",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_compensation_peak",
+        "sensor.daily_energy_compensation_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity & fixed price 2 tariffs
+    [
+        "sensor.energy_price_compensation",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_compensation_peak",
+        "sensor.daily_energy_compensation_offpeak",
+        "select.daily_energy",
+    ],
+    ###################
+    # gas source_type #
+    ###################
+    # No price 2 tariffs
+    [
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Fixed price 2 tariffs
+    [
+        "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity & fixed price 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    #####################
+    # water source_type #
+    #####################
+    # No price 2 tariffs
+    [
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Fixed price 2 tariffs
+    [
+        "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
+    ],
+    # Price entity & fixed price 2 tariffs
+    [
+        "sensor.energy_price_cost",
+        "sensor.daily_energy_peak",
+        "sensor.daily_energy_offpeak",
+        "sensor.daily_energy_cost_peak",
+        "sensor.daily_energy_cost_offpeak",
+        "select.daily_energy",
     ],
 ]
 
@@ -889,6 +1304,35 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
+    ################################
+    # Create utility meter defined #
+    ################################
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
     ##################################
     # Create only Energy cost sensor #
     ##################################
@@ -909,4 +1353,149 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     {},
     # Price entity & fixed price 2 tariffs
     {},
+    #########################
+    # from_grid source_type #
+    #########################
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    #######################
+    # to_grid source_type #
+    #######################
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_compensation_peak": "sensor.energy_price_compensation",
+        "sensor.daily_energy_compensation_offpeak": "sensor.energy_price_compensation",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_compensation_peak": "sensor.energy_daily_energy_compensation",
+        "sensor.daily_energy_compensation_offpeak": "sensor.energy_daily_energy_compensation",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_compensation_peak": "sensor.energy_price_compensation",
+        "sensor.daily_energy_compensation_offpeak": "sensor.energy_price_compensation",
+    },
+    ###################
+    # gas source_type #
+    ###################
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    #####################
+    # water source_type #
+    #####################
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    #########################
+    # from_grid source_type #
+    #########################
+    # No price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+    },
+    # Price entity 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
+    # Fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
+    },
+    # Price entity & fixed price 2 tariffs
+    {
+        "sensor.daily_energy_peak": "sensor.energy",
+        "sensor.daily_energy_offpeak": "sensor.energy",
+        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
+        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
+    },
 ]

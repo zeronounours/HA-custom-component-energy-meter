@@ -11,12 +11,36 @@ input_number:
     min: 0
     max: 100
     step: 0.5
+  gas_price:
+    name: Gas price input
+    initial: 2
+    min: 0
+    max: 100
+    step: 0.5
+  water_price:
+    name: Water price input
+    initial: 2
+    min: 0
+    max: 100
+    step: 0.5
   power:
     name: Power input
     initial: 1000
     min: 0
     max: 10000
     step: 100
+  gas_flow:
+    name: Gas Flow input
+    initial: 3
+    min: 0
+    max: 100
+    step: 0.5
+  water_flow:
+    name: Water Flow input
+    initial: 3
+    min: 0
+    max: 100
+    step: 0.5
 
 template:
   - trigger:
@@ -37,12 +61,44 @@ template:
         device_class: monetary
         attributes: # to force update every seconds for integration
           attribute: "{{ now().second }}"
+      - name: Gas price
+        state: "{{ states('input_number.gas_price') }}"
+        unit_of_measurement: USD/m³
+        device_class: monetary
+        attributes: # to force update every seconds for integration
+          attribute: "{{ now().second }}"
+      - name: Water price
+        state: "{{ states('input_number.water_price') }}"
+        unit_of_measurement: USD/m³
+        device_class: monetary
+        attributes: # to force update every seconds for integration
+          attribute: "{{ now().second }}"
       - name: Power
         state: "{{ states('input_number.power') }}"
         unit_of_measurement: W
         device_class: power
         attributes: # to force update every seconds for integration
           attribute: "{{ now().second }}"
+      - name: Gas Flow
+        state: "{{ states('input_number.gas_flow') }}"
+        unit_of_measurement: m³/s
+        attributes: # to force update every seconds for integration
+          attribute: "{{ now().second }}"
+      - name: Gas
+        state: "{{ states('sensor.gas_int') }}"
+        device_class: gas
+        state_class: total_increasing
+        unit_of_measurement: m³
+      - name: Water Flow
+        state: "{{ states('input_number.water_flow') }}"
+        unit_of_measurement: m³/s
+        attributes: # to force update every seconds for integration
+          attribute: "{{ now().second }}"
+      - name: Water
+        state: "{{ states('sensor.water_int') }}"
+        state_class: total_increasing
+        device_class: water
+        unit_of_measurement: m³
 
 sensor:
   - platform: integration
@@ -53,6 +109,14 @@ sensor:
     source: sensor.power
     name: energy2
     unit_prefix: k
+  - platform: integration
+    source: sensor.gas_flow
+    name: gas_int
+    unit_time: s
+  - platform: integration
+    source: sensor.water_flow
+    name: water_int
+    unit_time: s
 
 energy_meter:
   daily_energy:
@@ -77,8 +141,71 @@ energy_meter:
     name: Yearly Energy
     cycle: yearly
     price_entity: sensor.energy_price
+
   cost_only_no_id:
     source: sensor.energy2
     name: Energy Cost 2
     price_entity: sensor.energy_price2
     create_utility_meter: no
+  daily_energy_to_grid:
+    unique_id: daily_energy_meter_to_grid
+    source: sensor.energy2
+    name: Daily Energy send to grid
+    cycle: daily
+    price_entity: sensor.energy_price2
+    source_type: to_grid
+    tariffs:
+      - peak
+      - offpeak
+
+  daily_gas:
+    unique_id: daily_gas_meter
+    source: sensor.gas
+    name: Daily Gas
+    cycle: daily
+    price_entity: sensor.gas_price
+    source_type: gas
+    tariffs:
+      - peak
+      - offpeak
+  monthly_gas:
+    source: sensor.gas
+    name: Monthly Gas
+    cycle: monthly
+    price: 5
+    source_type: gas
+    tariffs:
+      - peak
+      - offpeak
+  yearly_gas:
+    source: sensor.gas
+    name: Yearly Gas
+    cycle: yearly
+    price_entity: sensor.gas_price
+    source_type: gas
+
+  daily_water:
+    unique_id: daily_water_meter
+    source: sensor.water
+    name: Daily Water
+    cycle: daily
+    price_entity: sensor.water_price
+    source_type: water
+    tariffs:
+      - peak
+      - offpeak
+  monthly_water:
+    source: sensor.water
+    name: Monthly Water
+    cycle: monthly
+    price: 5
+    source_type: water
+    tariffs:
+      - peak
+      - offpeak
+  yearly_water:
+    source: sensor.water
+    name: Yearly Water
+    cycle: yearly
+    price_entity: sensor.water_price
+    source_type: water
