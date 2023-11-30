@@ -106,6 +106,87 @@ Whether to create a utility meter for the energy and energy costs. If set to
 
 ---
 
+### Using tariff
+
+Tariff are like virtual counter associated to your meter. See the [official
+documentation utility meters][um-conf] to understand them. They are only used
+to increment a different index on the meter. **They won't change price of
+energy.**
+
+Tariffs are usually changed through automation based on time of state from
+another sensor. The following example shows how to set a different tariff:
+
+```yaml
+# in configurations.yaml
+automation:
+  - id: switch_peak_offpeak_tariff
+    alias: "Switch peak/offpeak tariff"
+    initial_state: true
+    trigger:
+      - platform: time
+        at: "05:00:00"
+        variables:
+          tariff: peak
+      - platform: time
+        at: "20:00:00"
+        variables:
+          tariff: offpeak
+    action:
+      - service: select.select_option
+        target:
+          entity_id:
+            - select.daily_energy
+            - select.monthly_energy
+            - select.yearly_energy
+        data:
+          option: "{{ tariff }}"
+```
+
+The following example provides another way to set tariff with a more complex
+logic:
+
+```yaml
+# in configurations.yaml
+automation:
+  - alias: Set Energy Meter Rate
+    description: "Set Energy Meter Rate"
+    trigger:
+      - platform: time
+        at: "07:00:30"
+      - platform: time
+        at: "09:00:30"
+      - platform: time
+        at: "17:00:30"
+      - platform: time
+        at: "20:00:30"
+      - platform: time
+        at: "22:00:30"
+      - platform: homeassistant
+        event: start
+    condition: []
+    action:
+      - service: select.select_option
+        data:
+          option: >-
+            {% set t = now() %} {%- if (( t.hour >= 7 and t.hour < 9 ) or (
+            t.hour >= 17 and t.hour < 20 )) and
+            is_state('binary_sensor.workday_sensor', 'on') %}
+              peak
+            {%- elif (( t.hour >= 9 and t.hour < 17 ) or ( t.hour >= 20 and
+            t.hour < 22 )) and is_state('binary_sensor.workday_sensor', 'on')
+            %}
+              shoulder
+            {%- else -%}
+              offpeak
+            {%- endif -%}
+        target:
+          entity_id:
+            - select.daily_energy
+            - select.monthly_energy
+            - select.yearly_energy
+    mode: single
+```
+
 ### Examples
 
 ```yaml
@@ -210,3 +291,4 @@ target:
   https://github.com/zeronounours/HA-custom-component-energy-meter/releases
 [license-shield]:
   https://img.shields.io/github/license/zeronounours/HA-custom-component-energy-meter.svg?style=for-the-badge
+[um-conf]: https://www.home-assistant.io/integrations/utility_meter/
