@@ -48,14 +48,15 @@ The main difference is the addition of `price` and `price_entity` options:
 
 **price** _float (optional)_
 
-The static price of the tariff (in currency/kWh)
+The static price of the tariff (in currency per source unit, e.g. USD/kWh or
+USD/m³)
 
 ---
 
 **price_entity** _string (optional)_
 
-The entity ID of a sensor giving the current price of the tariff (in
-currency/kWh)
+The entity ID of a sensor giving the current price of the tariff (in currency
+per source unit, e.g. USD/kWh or USD/m³)
 
 ---
 
@@ -66,6 +67,30 @@ in $/kWh.
 Only one of `price` or `price_entity` should be given. If both are given,
 `price_entity` would have precedence. If none is defined, this integration will
 act as a basic utility meter, with no cost tracking.
+
+### Energy cost type (Gas, Water, Return to grid)
+
+The configuration can contain the optional `source_type` option to define the
+type of energy being monitored:
+
+---
+
+**source_type** _string (optional)_
+
+The type of energy being followed as source. These are the same as the builtin
+energy dashboard. It can be of 4 types:
+
+- `from_grid`: this is the default. To be used if source tracks grid
+  consumption.
+- `to_grid`: to be used if source tracks energy returned to grid.
+- `gas`: to be used if source tracks gas consumption.
+- `water`: to be used if source tracks water consumption.
+
+---
+
+Keep in mind that depending on the time, the allowed units for the source will
+differ. `from_grid` and `to_grid` needs an electrical energy, while `gas` and
+`water` expect a volume.
 
 ### Energy cost sensor only
 
@@ -108,6 +133,16 @@ energy_meter:
     source: sensor.energy
     price: 0.20
     create_utility_meter: false
+
+  monthly_gas:
+    source: sensor.gas_consumption
+    name: Monthly Gas
+    cycle: monthly
+    price_entity: sensor.current_gas_price
+    source_type: gas
+    tariffs:
+      - peak
+      - offpeak
 ```
 
 Usually, source energy sensors shares the same price. In order to prevent
