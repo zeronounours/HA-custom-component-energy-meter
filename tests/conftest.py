@@ -5,6 +5,8 @@ import logging
 from unittest.mock import patch
 
 # Third party libraries
+from homeassistant.components.energy.const import DOMAIN as EN_DOMAIN
+from homeassistant.components.utility_meter.const import DOMAIN as UM_DOMAIN
 from homeassistant.helpers import recorder
 import pytest
 
@@ -23,6 +25,12 @@ def pytest_configure(config: pytest.Config) -> None:
     """Register marker for tests that log exceptions."""
     if config.getoption("verbose") > 0:
         logging.getLogger(f"custom_components.{DOMAIN}").setLevel(logging.DEBUG)
+        logging.getLogger(f"homeassistant.components.{EN_DOMAIN}").setLevel(
+            logging.DEBUG,
+        )
+        logging.getLogger(f"homeassistant.components.{UM_DOMAIN}").setLevel(
+            logging.DEBUG,
+        )
 
 
 # Used to enable custom_integration

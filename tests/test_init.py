@@ -32,16 +32,18 @@ async def test_setup_and_check_created_sensors(hass, config, created_sensors):
     await hass.async_block_till_done()
 
     # setup the integration
-    assert await async_setup_component(hass, DOMAIN, config) is True
+    assert await async_setup_component(hass, DOMAIN, config) is True, "Failed to setup"
     await hass.async_block_till_done()
 
     # asserts the created sensors
     entities = hass.states.async_entity_ids()
     for sensor in created_sensors:
-        assert sensor in entities
+        assert sensor in entities, "Unexpected sensor name"
+
+    # add constant for sensor.energy & prices
     assert (
         len(entities) == len(created_sensors) + 3
-    )  # add constant for sensor.energy & prices
+    ), "Invalid number of created sensors"
 
 
 @pytest.mark.parametrize(
@@ -58,13 +60,17 @@ async def test_setup_and_utility_meter_sources(hass, config, um_sources):
     await hass.async_block_till_done()
 
     # setup the integration
-    assert await async_setup_component(hass, DOMAIN, config) is True
+    assert await async_setup_component(hass, DOMAIN, config) is True, "Failed to setup"
     await hass.async_block_till_done()
 
     # asserts the created sensors
     for utility_meter, source in um_sources.items():
-        assert (state := hass.states.get(utility_meter)) is not None
-        assert state.attributes[ATTR_SOURCE_ID] == source
+        assert (
+            state := hass.states.get(utility_meter)
+        ) is not None, "No utility meter found"
+        assert (
+            state.attributes[ATTR_SOURCE_ID] == source
+        ), "Invalid tracked entity of utility meter"
 
 
 @pytest.mark.parametrize(
@@ -88,9 +94,13 @@ async def test_valid_source_adapter_resolution(
     adapter = get_energy_cost_sensor_adapter(conf)
 
     # assert expected adapter
-    assert adapter is not None
-    assert adapter.source_type == adapter_source_type
-    assert adapter.flow_type == adapter_flow_type
+    assert adapter is not None, "Adapter not defined"
+    assert (
+        adapter.source_type == adapter_source_type
+    ), "Adapter source_type is not the expected one"
+    assert (
+        adapter.flow_type == adapter_flow_type
+    ), "Adapter flow_type is not the expected one"
 
 
 async def test_unknown_source_type_adapter_resolution():
@@ -101,7 +111,7 @@ async def test_unknown_source_type_adapter_resolution():
         adapter = get_energy_cost_sensor_adapter(conf)
 
         # assert expected adapter
-        assert adapter is None
+        assert adapter is None, "Adapter defined"
         # assert an error is logged
         assert_logger(logger, "error")
 
@@ -124,7 +134,7 @@ async def test_failed_adapter_resolution():
         adapter = get_energy_cost_sensor_adapter(conf)
 
         # assert expected adapter
-        assert adapter is None
+        assert adapter is None, "Adapter defined"
         # assert an error is logged
         assert_logger(logger, "error")
 
@@ -161,7 +171,7 @@ async def test_creation_with_invalid_adapter(hass, config):
                 },
             )
             is True
-        )
+        ), "Failed to setup"
         await hass.async_block_till_done()
 
         # asserts the created sensors
@@ -174,9 +184,10 @@ async def test_creation_with_invalid_adapter(hass, config):
             # should be logged
         ]
         for sensor in created_sensors:
-            assert sensor in entities
+            assert sensor in entities, "Unexpected sensor name"
+        # add constant for sensor.energy & prices
         assert (
             len(entities) == len(created_sensors) + 2
-        )  # add constant for sensor.energy & prices
+        ), "Invalid number of created sensors"
         # assert an error is logged
         assert_logger(logger, "error")
