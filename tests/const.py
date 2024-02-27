@@ -8,12 +8,12 @@ TEST_CASES = [
     #############
     # NO CONFIG #
     #############
-    # No config
+    # 0 - No config
     {},
     #############
     # NO TARIFF #
     #############
-    # No price No tariff
+    # 1 - No price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -21,7 +21,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity No tariff
+    # 2 - Price entity No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -30,7 +30,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price entity No tariff
+    # 3 - Fixed price entity No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -39,7 +39,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price No tariff
+    # 4 - Price entity & fixed price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -52,7 +52,7 @@ TEST_CASES = [
     #############
     # 2 TARIFFS #
     #############
-    # No price 2 tariffs
+    # 5 - No price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -61,7 +61,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 6 - Price entity 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -71,7 +71,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 7 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -81,7 +81,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 8 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -95,7 +95,7 @@ TEST_CASES = [
     ###################
     # 2 ENERGY_METERS #
     ###################
-    # 2 meters with same entity price No tariff
+    # 9 - 2 meters with same entity price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -108,7 +108,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with same entity price 2 tariff
+    # 10 - 2 meters with same entity price 2 tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -123,7 +123,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with same price No tariff
+    # 11 - 2 meters with same price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -136,7 +136,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with same price 2 tariff
+    # 12 - 2 meters with same price 2 tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -151,7 +151,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with different entity price No tariff
+    # 13 - 2 meters with different entity price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -164,7 +164,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with different entity price 2 tariff
+    # 14 - 2 meters with different entity price 2 tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -179,7 +179,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with different price No tariff
+    # 15 - 2 meters with different price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -192,7 +192,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with different price 2 tariff
+    # 16 - 2 meters with different price 2 tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -207,7 +207,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with different prices & entity No tariff
+    # 17 - 2 meters with different prices & entity No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -220,7 +220,7 @@ TEST_CASES = [
             },
         },
     },
-    # 2 meters with different prices & entity 2 tariff
+    # 18 - 2 meters with different prices & entity 2 tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -238,7 +238,7 @@ TEST_CASES = [
     ##############
     # Unique IDs #
     ##############
-    # No price No tariff
+    # 19 - No price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -247,7 +247,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity No tariff
+    # 20 - Price entity No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -257,7 +257,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price entity No tariff
+    # 21 - Fixed price entity No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -267,7 +267,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price No tariff
+    # 22 - Price entity & fixed price No tariff
     {
         DOMAIN: {
             "daily_energy": {
@@ -278,7 +278,7 @@ TEST_CASES = [
             },
         },
     },
-    # No price 2 tariffs
+    # 23 - No price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -288,7 +288,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 24 - Price entity 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -299,7 +299,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 25 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -310,7 +310,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 26 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -325,7 +325,7 @@ TEST_CASES = [
     ################################
     # Create utility meter defined #
     ################################
-    # No price 2 tariffs
+    # 27 - No price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -335,7 +335,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 28 - Price entity 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -346,7 +346,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 29 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -357,7 +357,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 30 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -372,7 +372,7 @@ TEST_CASES = [
     ##################################
     # Create only Energy cost sensor #
     ##################################
-    # No price No tariff
+    # 31 - No price No tariff
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -381,7 +381,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity No tariff
+    # 32 - Price entity No tariff
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -391,7 +391,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price entity No tariff
+    # 33 - Fixed price entity No tariff
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -401,7 +401,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price No tariff
+    # 34 - Price entity & fixed price No tariff
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -412,7 +412,7 @@ TEST_CASES = [
             },
         },
     },
-    # No price 2 tariffs
+    # 35 - No price 2 tariffs
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -422,7 +422,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 36 - Price entity 2 tariffs
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -433,7 +433,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 37 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -444,7 +444,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 38 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "energy_cost_only": {
@@ -459,7 +459,7 @@ TEST_CASES = [
     #########################
     # from_grid source_type #
     #########################
-    # No price 2 tariffs
+    # 39 - No price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -469,7 +469,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 40 - Price entity 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -480,7 +480,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 41 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -491,7 +491,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 42 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -506,7 +506,7 @@ TEST_CASES = [
     #######################
     # to_grid source_type #
     #######################
-    # No price 2 tariffs
+    # 43 - No price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -516,7 +516,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 44 - Price entity 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -527,7 +527,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 45 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -538,7 +538,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 46 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -553,7 +553,7 @@ TEST_CASES = [
     ###################
     # gas source_type #
     ###################
-    # No price 2 tariffs
+    # 47 - No price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -563,7 +563,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 48 - Price entity 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -574,7 +574,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 49 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -585,7 +585,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 50 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -600,7 +600,7 @@ TEST_CASES = [
     #####################
     # water source_type #
     #####################
-    # No price 2 tariffs
+    # 51 - No price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -610,7 +610,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity 2 tariffs
+    # 52 - Price entity 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -621,7 +621,7 @@ TEST_CASES = [
             },
         },
     },
-    # Fixed price 2 tariffs
+    # 53 - Fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -632,7 +632,7 @@ TEST_CASES = [
             },
         },
     },
-    # Price entity & fixed price 2 tariffs
+    # 54 - Price entity & fixed price 2 tariffs
     {
         DOMAIN: {
             "daily_energy": {
@@ -651,28 +651,28 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     #############
     # NO CONFIG #
     #############
-    # No config
+    # 0 - No config
     [],
     #############
     # NO TARIFF #
     #############
-    # No price No tariff
+    # 1 - No price No tariff
     [
         "sensor.daily_energy",
     ],
-    # Price entity No tariff
+    # 2 - Price entity No tariff
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy",
         "sensor.daily_energy_cost",
     ],
-    # Fixed price entity No tariff
+    # 3 - Fixed price entity No tariff
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy",
         "sensor.daily_energy_cost",
     ],
-    # Price entity & fixed price No tariff
+    # 4 - Price entity & fixed price No tariff
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy",
@@ -681,13 +681,13 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     #############
     # 2 TARIFFS #
     #############
-    # No price 2 tariffs
+    # 5 - No price 2 tariffs
     [
         "sensor.daily_energy_peak",
         "sensor.daily_energy_offpeak",
         "select.daily_energy",
     ],
-    # Price entity 2 tariffs
+    # 6 - Price entity 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -696,7 +696,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Fixed price 2 tariffs
+    # 7 - Fixed price 2 tariffs
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_peak",
@@ -705,7 +705,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 8 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -717,7 +717,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     ###################
     # 2 ENERGY_METERS #
     ###################
-    # 2 meters with same entity price No tariff
+    # 9 - 2 meters with same entity price No tariff
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy",
@@ -725,7 +725,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy",
         "sensor.monthly_energy_cost",
     ],
-    # 2 meters with same entity price 2 tariff
+    # 10 - 2 meters with same entity price 2 tariff
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -739,7 +739,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_offpeak",
         "select.monthly_energy",
     ],
-    # 2 meters with same price No tariff
+    # 11 - 2 meters with same price No tariff
     [
         "sensor.energy_daily_energy_cost",
         "sensor.energy_monthly_energy_cost",
@@ -748,7 +748,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy",
         "sensor.monthly_energy_cost",
     ],
-    # 2 meters with same price 2 tariff
+    # 12 - 2 meters with same price 2 tariff
     [
         "sensor.energy_daily_energy_cost",
         "sensor.energy_monthly_energy_cost",
@@ -763,7 +763,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_offpeak",
         "select.monthly_energy",
     ],
-    # 2 meters with different entity price No tariff
+    # 13 - 2 meters with different entity price No tariff
     [
         "sensor.energy_price_cost",
         "sensor.energy_price2_cost",
@@ -772,7 +772,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy",
         "sensor.monthly_energy_cost",
     ],
-    # 2 meters with different entity price 2 tariff
+    # 14 - 2 meters with different entity price 2 tariff
     [
         "sensor.energy_price_cost",
         "sensor.energy_price2_cost",
@@ -787,7 +787,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_offpeak",
         "select.monthly_energy",
     ],
-    # 2 meters with different price No tariff
+    # 15 - 2 meters with different price No tariff
     [
         "sensor.energy_daily_energy_cost",
         "sensor.energy_monthly_energy_cost",
@@ -796,7 +796,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy",
         "sensor.monthly_energy_cost",
     ],
-    # 2 meters with different price 2 tariff
+    # 16 - 2 meters with different price 2 tariff
     [
         "sensor.energy_daily_energy_cost",
         "sensor.energy_monthly_energy_cost",
@@ -811,7 +811,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_offpeak",
         "select.monthly_energy",
     ],
-    # 2 meters with different prices & entity No tariff
+    # 17 - 2 meters with different prices & entity No tariff
     [
         "sensor.energy_price_cost",
         "sensor.energy_monthly_energy_cost",
@@ -820,7 +820,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.monthly_energy",
         "sensor.monthly_energy_cost",
     ],
-    # 2 meters with different prices & entity 2 tariff
+    # 18 - 2 meters with different prices & entity 2 tariff
     [
         "sensor.energy_price_cost",
         "sensor.energy_monthly_energy_cost",
@@ -838,35 +838,35 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     ##############
     # Unique IDs #
     ##############
-    # No price No tariff
+    # 19 - No price No tariff
     [
         "sensor.daily_energy",
     ],
-    # Price entity No tariff
+    # 20 - Price entity No tariff
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy",
         "sensor.daily_energy_cost",
     ],
-    # Fixed price entity No tariff
+    # 21 - Fixed price entity No tariff
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy",
         "sensor.daily_energy_cost",
     ],
-    # Price entity & fixed price No tariff
+    # 22 - Price entity & fixed price No tariff
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy",
         "sensor.daily_energy_cost",
     ],
-    # No price 2 tariffs
+    # 23 - No price 2 tariffs
     [
         "sensor.daily_energy_peak",
         "sensor.daily_energy_offpeak",
         "select.daily_energy",
     ],
-    # Price entity 2 tariffs
+    # 24 - Price entity 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -875,7 +875,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Fixed price 2 tariffs
+    # 25 - Fixed price 2 tariffs
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_peak",
@@ -884,7 +884,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 26 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -896,13 +896,13 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     ################################
     # Create utility meter defined #
     ################################
-    # No price 2 tariffs
+    # 27 - No price 2 tariffs
     [
         "sensor.daily_energy_peak",
         "sensor.daily_energy_offpeak",
         "select.daily_energy",
     ],
-    # Price entity 2 tariffs
+    # 28 - Price entity 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -911,7 +911,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Fixed price 2 tariffs
+    # 29 - Fixed price 2 tariffs
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_peak",
@@ -920,7 +920,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 30 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -932,44 +932,44 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     ##################################
     # Create only Energy cost sensor #
     ##################################
-    # No price No tariff
+    # 31 - No price No tariff
     [],
-    # Price entity No tariff
+    # 32 - Price entity No tariff
     [
         "sensor.energy_price_cost",
     ],
-    # Fixed price entity No tariff
+    # 33 - Fixed price entity No tariff
     [
         "sensor.energy_energy_cost_only_cost",
     ],
-    # Price entity & fixed price No tariff
+    # 34 - Price entity & fixed price No tariff
     [
         "sensor.energy_price_cost",
     ],
-    # No price 2 tariffs
+    # 35 - No price 2 tariffs
     [],
-    # Price entity 2 tariffs
+    # 36 - Price entity 2 tariffs
     [
         "sensor.energy_price_cost",
     ],
-    # Fixed price 2 tariffs
+    # 37 - Fixed price 2 tariffs
     [
         "sensor.energy_energy_cost_only_cost",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 38 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
     ],
     #########################
     # from_grid source_type #
     #########################
-    # No price 2 tariffs
+    # 39 - No price 2 tariffs
     [
         "sensor.daily_energy_peak",
         "sensor.daily_energy_offpeak",
         "select.daily_energy",
     ],
-    # Price entity 2 tariffs
+    # 40 - Price entity 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -978,7 +978,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Fixed price 2 tariffs
+    # 41 - Fixed price 2 tariffs
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_peak",
@@ -987,7 +987,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 42 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -999,13 +999,13 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     #######################
     # to_grid source_type #
     #######################
-    # No price 2 tariffs
+    # 43 - No price 2 tariffs
     [
         "sensor.daily_energy_peak",
         "sensor.daily_energy_offpeak",
         "select.daily_energy",
     ],
-    # Price entity 2 tariffs
+    # 44 - Price entity 2 tariffs
     [
         "sensor.energy_price_compensation",
         "sensor.daily_energy_peak",
@@ -1014,7 +1014,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_compensation_offpeak",
         "select.daily_energy",
     ],
-    # Fixed price 2 tariffs
+    # 45 - Fixed price 2 tariffs
     [
         "sensor.energy_daily_energy_compensation",
         "sensor.daily_energy_peak",
@@ -1023,7 +1023,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_compensation_offpeak",
         "select.daily_energy",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 46 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_compensation",
         "sensor.daily_energy_peak",
@@ -1035,13 +1035,13 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     ###################
     # gas source_type #
     ###################
-    # No price 2 tariffs
+    # 47 - No price 2 tariffs
     [
         "sensor.daily_energy_peak",
         "sensor.daily_energy_offpeak",
         "select.daily_energy",
     ],
-    # Price entity 2 tariffs
+    # 48 - Price entity 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -1050,7 +1050,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Fixed price 2 tariffs
+    # 49 - Fixed price 2 tariffs
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_peak",
@@ -1059,7 +1059,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 50 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -1071,13 +1071,13 @@ CHECK_CREATED_EXPECTED_RESULTS = [
     #####################
     # water source_type #
     #####################
-    # No price 2 tariffs
+    # 51 - No price 2 tariffs
     [
         "sensor.daily_energy_peak",
         "sensor.daily_energy_offpeak",
         "select.daily_energy",
     ],
-    # Price entity 2 tariffs
+    # 52 - Price entity 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -1086,7 +1086,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Fixed price 2 tariffs
+    # 53 - Fixed price 2 tariffs
     [
         "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_peak",
@@ -1095,7 +1095,7 @@ CHECK_CREATED_EXPECTED_RESULTS = [
         "sensor.daily_energy_cost_offpeak",
         "select.daily_energy",
     ],
-    # Price entity & fixed price 2 tariffs
+    # 54 - Price entity & fixed price 2 tariffs
     [
         "sensor.energy_price_cost",
         "sensor.daily_energy_peak",
@@ -1110,26 +1110,26 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     #############
     # NO CONFIG #
     #############
-    # No config
+    # 0 - No config
     {},
     #############
     # NO TARIFF #
     #############
-    # No price No tariff
+    # 1 - No price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
     },
-    # Price entity No tariff
+    # 2 - Price entity No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_price_cost",
     },
-    # Fixed price entity No tariff
+    # 3 - Fixed price entity No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price No tariff
+    # 4 - Price entity & fixed price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_price_cost",
@@ -1137,26 +1137,26 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     #############
     # 2 TARIFFS #
     #############
-    # No price 2 tariffs
+    # 5 - No price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
     },
-    # Price entity 2 tariffs
+    # 6 - Price entity 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
-    # Fixed price 2 tariffs
+    # 7 - Fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price 2 tariffs
+    # 8 - Price entity & fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1166,14 +1166,14 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     ###################
     # 2 ENERGY_METERS #
     ###################
-    # 2 meters with same entity price No tariff
+    # 9 - 2 meters with same entity price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_price_cost",
         "sensor.monthly_energy": "sensor.energy",
         "sensor.monthly_energy_cost": "sensor.energy_price_cost",
     },
-    # 2 meters with same entity price 2 tariff
+    # 10 - 2 meters with same entity price 2 tariff
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1184,14 +1184,14 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.monthly_energy_cost_offpeak": "sensor.energy_price_cost",
     },
-    # 2 meters with same price No tariff
+    # 11 - 2 meters with same price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
         "sensor.monthly_energy": "sensor.energy",
         "sensor.monthly_energy_cost": "sensor.energy_monthly_energy_cost",
     },
-    # 2 meters with same price 2 tariff
+    # 12 - 2 meters with same price 2 tariff
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1202,14 +1202,14 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_peak": "sensor.energy_monthly_energy_cost",
         "sensor.monthly_energy_cost_offpeak": "sensor.energy_monthly_energy_cost",
     },
-    # 2 meters with different entity price No tariff
+    # 13 - 2 meters with different entity price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_price_cost",
         "sensor.monthly_energy": "sensor.energy",
         "sensor.monthly_energy_cost": "sensor.energy_price2_cost",
     },
-    # 2 meters with different entity price 2 tariff
+    # 14 - 2 meters with different entity price 2 tariff
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1220,14 +1220,14 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_peak": "sensor.energy_price2_cost",
         "sensor.monthly_energy_cost_offpeak": "sensor.energy_price2_cost",
     },
-    # 2 meters with different price No tariff
+    # 15 - 2 meters with different price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
         "sensor.monthly_energy": "sensor.energy",
         "sensor.monthly_energy_cost": "sensor.energy_monthly_energy_cost",
     },
-    # 2 meters with different price 2 tariff
+    # 16 - 2 meters with different price 2 tariff
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1238,14 +1238,14 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
         "sensor.monthly_energy_cost_peak": "sensor.energy_monthly_energy_cost",
         "sensor.monthly_energy_cost_offpeak": "sensor.energy_monthly_energy_cost",
     },
-    # 2 meters with different prices & entity No tariff
+    # 17 - 2 meters with different prices & entity No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_price_cost",
         "sensor.monthly_energy": "sensor.energy",
         "sensor.monthly_energy_cost": "sensor.energy_monthly_energy_cost",
     },
-    # 2 meters with different prices & entity 2 tariff
+    # 18 - 2 meters with different prices & entity 2 tariff
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1259,45 +1259,45 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     ##############
     # Unique IDs #
     ##############
-    # No price No tariff
+    # 19 - No price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
     },
-    # Price entity No tariff
+    # 20 - Price entity No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_price_cost",
     },
-    # Fixed price entity No tariff
+    # 21 - Fixed price entity No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price No tariff
+    # 22 - Price entity & fixed price No tariff
     {
         "sensor.daily_energy": "sensor.energy",
         "sensor.daily_energy_cost": "sensor.energy_price_cost",
     },
-    # No price 2 tariffs
+    # 23 - No price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
     },
-    # Price entity 2 tariffs
+    # 24 - Price entity 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
-    # Fixed price 2 tariffs
+    # 25 - Fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price 2 tariffs
+    # 26 - Price entity & fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1307,26 +1307,26 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     ################################
     # Create utility meter defined #
     ################################
-    # No price 2 tariffs
+    # 27 - No price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
     },
-    # Price entity 2 tariffs
+    # 28 - Price entity 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
-    # Fixed price 2 tariffs
+    # 29 - Fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price 2 tariffs
+    # 30 - Price entity & fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1337,45 +1337,45 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     # Create only Energy cost sensor #
     ##################################
     # Energy cost only does not have utility meter to track source
-    # No price No tariff
+    # 31 - No price No tariff
     {},
-    # Price entity No tariff
+    # 32 - Price entity No tariff
     {},
-    # Fixed price entity No tariff
+    # 33 - Fixed price entity No tariff
     {},
-    # Price entity & fixed price No tariff
+    # 34 - Price entity & fixed price No tariff
     {},
-    # No price 2 tariffs
+    # 35 - No price 2 tariffs
     {},
-    # Price entity 2 tariffs
+    # 36 - Price entity 2 tariffs
     {},
-    # Fixed price 2 tariffs
+    # 37 - Fixed price 2 tariffs
     {},
-    # Price entity & fixed price 2 tariffs
+    # 38 - Price entity & fixed price 2 tariffs
     {},
     #########################
     # from_grid source_type #
     #########################
-    # No price 2 tariffs
+    # 39 - No price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
     },
-    # Price entity 2 tariffs
+    # 40 - Price entity 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
-    # Fixed price 2 tariffs
+    # 41 - Fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price 2 tariffs
+    # 42 - Price entity & fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1385,26 +1385,26 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     #######################
     # to_grid source_type #
     #######################
-    # No price 2 tariffs
+    # 43 - No price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
     },
-    # Price entity 2 tariffs
+    # 44 - Price entity 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_compensation_peak": "sensor.energy_price_compensation",
         "sensor.daily_energy_compensation_offpeak": "sensor.energy_price_compensation",
     },
-    # Fixed price 2 tariffs
+    # 45 - Fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_compensation_peak": "sensor.energy_daily_energy_compensation",
         "sensor.daily_energy_compensation_offpeak": "sensor.energy_daily_energy_compensation",
     },
-    # Price entity & fixed price 2 tariffs
+    # 46 - Price entity & fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1414,26 +1414,26 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     ###################
     # gas source_type #
     ###################
-    # No price 2 tariffs
+    # 47 - No price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
     },
-    # Price entity 2 tariffs
+    # 48 - Price entity 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
-    # Fixed price 2 tariffs
+    # 49 - Fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price 2 tariffs
+    # 50 - Price entity & fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
@@ -1443,55 +1443,26 @@ CHECK_UM_SOURCES_EXPECTED_RESULTS = [
     #####################
     # water source_type #
     #####################
-    # No price 2 tariffs
+    # 51 - No price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
     },
-    # Price entity 2 tariffs
+    # 52 - Price entity 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
     },
-    # Fixed price 2 tariffs
+    # 53 - Fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",
         "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
         "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
     },
-    # Price entity & fixed price 2 tariffs
-    {
-        "sensor.daily_energy_peak": "sensor.energy",
-        "sensor.daily_energy_offpeak": "sensor.energy",
-        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
-        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
-    },
-    #########################
-    # from_grid source_type #
-    #########################
-    # No price 2 tariffs
-    {
-        "sensor.daily_energy_peak": "sensor.energy",
-        "sensor.daily_energy_offpeak": "sensor.energy",
-    },
-    # Price entity 2 tariffs
-    {
-        "sensor.daily_energy_peak": "sensor.energy",
-        "sensor.daily_energy_offpeak": "sensor.energy",
-        "sensor.daily_energy_cost_peak": "sensor.energy_price_cost",
-        "sensor.daily_energy_cost_offpeak": "sensor.energy_price_cost",
-    },
-    # Fixed price 2 tariffs
-    {
-        "sensor.daily_energy_peak": "sensor.energy",
-        "sensor.daily_energy_offpeak": "sensor.energy",
-        "sensor.daily_energy_cost_peak": "sensor.energy_daily_energy_cost",
-        "sensor.daily_energy_cost_offpeak": "sensor.energy_daily_energy_cost",
-    },
-    # Price entity & fixed price 2 tariffs
+    # 54 - Price entity & fixed price 2 tariffs
     {
         "sensor.daily_energy_peak": "sensor.energy",
         "sensor.daily_energy_offpeak": "sensor.energy",

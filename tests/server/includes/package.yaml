@@ -51,25 +51,25 @@ template:
     sensor:
       - name: Energy price
         state: "{{ states('input_number.energy_price') }}"
-        unit_of_measurement: USD/kWh
+        unit_of_measurement: $/kWh
         device_class: monetary
         attributes: # to force update every seconds for integration
           attribute: "{{ now().second }}"
       - name: Energy price2
         state: "{{ states('input_number.energy_price2') }}"
-        unit_of_measurement: USD/kWh
+        unit_of_measurement: $/kWh
         device_class: monetary
         attributes: # to force update every seconds for integration
           attribute: "{{ now().second }}"
       - name: Gas price
         state: "{{ states('input_number.gas_price') }}"
-        unit_of_measurement: USD/m³
+        unit_of_measurement: $/m³
         device_class: monetary
         attributes: # to force update every seconds for integration
           attribute: "{{ now().second }}"
       - name: Water price
         state: "{{ states('input_number.water_price') }}"
-        unit_of_measurement: USD/m³
+        unit_of_measurement: $/m³
         device_class: monetary
         attributes: # to force update every seconds for integration
           attribute: "{{ now().second }}"
@@ -99,15 +99,21 @@ template:
         state_class: total_increasing
         device_class: water
         unit_of_measurement: m³
+      - name: Energy
+        state: "{{ states('sensor.power_int') }}"
+        state_class: total_increasing
+        device_class: energy
+        unit_of_measurement: kWh
+      - name: Energy2
+        state: "{{ states('sensor.power_int') }}"
+        state_class: total_increasing
+        device_class: energy
+        unit_of_measurement: kWh
 
 sensor:
   - platform: integration
     source: sensor.power
-    name: energy
-    unit_prefix: k
-  - platform: integration
-    source: sensor.power
-    name: energy2
+    name: power_int
     unit_prefix: k
   - platform: integration
     source: sensor.gas_flow
