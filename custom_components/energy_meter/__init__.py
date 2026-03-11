@@ -43,8 +43,8 @@ _LOGGER = logging.getLogger(__name__)
 
 
 SOURCE_TYPE_TO_SOURCE_ADAPTER = {
-    "from_grid": ("grid", "flow_from"),
-    "to_grid": ("grid", "flow_to"),
+    "from_grid": ("grid", None),
+    "to_grid": ("grid", None),
     "gas": ("gas", None),
     "water": ("water", None),
 }
